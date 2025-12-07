@@ -257,9 +257,8 @@
             cityInput.value = city.name; // Set the input text
             hideSearchResults();
             
-            // --- THIS IS THE FIX ---
-            // Fetch weather using the reliable coordinates, not the name
-            fetchWeatherByCoords(city.lat, city.lon);
+            const preciseQuery = `${city.name}, ${city.country}`;
+            fetchWeather(preciseQuery);
         }
 
         // Hide search results
