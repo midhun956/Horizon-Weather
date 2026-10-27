@@ -564,18 +564,6 @@
                             </div>
                         </div>
 
-                        <!-- OTHER CITIES (Matching Image 1 Screen 1) -->
-                        <div>
-                            <div class="flex items-center justify-between mb-3 px-1">
-                                <h3 class="text-base font-bold tracking-tight text-white/90">Other Cities</h3>
-                                <button id="addCityQuickBtn" class="flex items-center gap-1.5 text-xs text-ios-teal font-semibold px-2.5 py-1 rounded-full liquid-glass-subtle hover:bg-white/15 ios-btn">
-                                    <span>+</span> Add City
-                                </button>
-                            </div>
-                            <div id="otherCitiesRow" class="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-3">
-                                <!-- Populated dynamically -->
-                            </div>
-                        </div>
 
                         <!-- TODAY HOURLY FORECAST (Matching Image 1 & 2 Strip) -->
                         <div class="liquid-glass rounded-3xl p-5 shadow-xl">
@@ -714,9 +702,12 @@
                                 <div class="absolute w-28 h-28 rounded-full border border-white/10 pointer-events-none"></div>
                                 <div class="absolute w-14 h-14 rounded-full border border-white/15 pointer-events-none"></div>
                                 
-                                <!-- Radar Sweep Pulse Line -->
-                                <div class="absolute inset-0 flex items-center justify-center pointer-events-none animate-radar">
-                                    <div class="w-1/2 h-1/2 bg-gradient-to-tr from-transparent via-ios-teal/10 to-ios-teal/35 rounded-tl-full origin-bottom-right"></div>
+                                <!-- Radar Circular Sweep Scanner -->
+                                <div class="absolute w-44 h-44 rounded-full pointer-events-none animate-radar flex items-center justify-center">
+                                    <!-- Smooth Conic Radar Sweep Beam -->
+                                    <div class="w-full h-full rounded-full" style="background: conic-gradient(from 0deg at 50% 50%, rgba(100, 210, 255, 0.4) 0deg, rgba(100, 210, 255, 0.12) 30deg, rgba(10, 132, 255, 0.02) 65deg, transparent 75deg, transparent 360deg);"></div>
+                                    <!-- Crisp Glowing Radar Leading Edge Sweep Line -->
+                                    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1.5px] h-1/2 bg-gradient-to-b from-ios-teal via-ios-teal/80 to-transparent shadow-[0_0_10px_#64D2FF]"></div>
                                 </div>
 
                                 <!-- Central Target Pin -->
@@ -1625,6 +1616,7 @@
 
         function renderOtherCities() {
             const container = document.getElementById('otherCitiesRow');
+            if (!container) return;
             container.innerHTML = '';
 
             AppState.savedCities.forEach(cityName => {
