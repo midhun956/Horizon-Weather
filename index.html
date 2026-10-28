@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Horizon Weather — iOS Liquid Glass</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌥️</text></svg>">
-    
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌥️</text></svg>">
+
     <!-- Google Fonts: Plus Jakarta Sans for SF Pro display feel -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -37,7 +41,7 @@
             }
         }
     </script>
-    
+
     <style>
         :root {
             --ios-ease: cubic-bezier(0.25, 1, 0.5, 1);
@@ -69,7 +73,7 @@
             backdrop-filter: blur(30px) saturate(190%) brightness(105%);
             -webkit-backdrop-filter: blur(30px) saturate(190%) brightness(105%);
             border: 1px solid var(--glass-border);
-            box-shadow: 
+            box-shadow:
                 inset 0 1px 1px 0 var(--glass-highlight),
                 inset 0 -1px 1px 0 rgba(0, 0, 0, 0.4),
                 0 20px 40px -15px rgba(0, 0, 0, 0.75),
@@ -107,10 +111,10 @@
             perspective: 1000px;
             will-change: transform;
         }
-        
+
         .tilt-card:hover {
             border-color: rgba(255, 255, 255, 0.24);
-            box-shadow: 
+            box-shadow:
                 inset 0 1px 2px 0 rgba(255, 255, 255, 0.45),
                 inset 0 -1px 1px 0 rgba(0, 0, 0, 0.5),
                 0 28px 55px -15px rgba(0, 0, 0, 0.85),
@@ -122,6 +126,7 @@
             transition: transform 0.2s var(--ios-ease), background-color 0.2s ease, opacity 0.2s ease;
             cursor: pointer;
         }
+
         .ios-btn:active {
             transform: scale(0.95);
         }
@@ -130,6 +135,7 @@
         .no-scrollbar::-webkit-scrollbar {
             display: none;
         }
+
         .no-scrollbar {
             -ms-overflow-style: none;
             scrollbar-width: none;
@@ -139,40 +145,67 @@
             height: 4px;
             width: 4px;
         }
+
         .ios-scrollbar::-webkit-scrollbar-track {
             background: rgba(255, 255, 255, 0.04);
             border-radius: 9999px;
         }
+
         .ios-scrollbar::-webkit-scrollbar-thumb {
             background: rgba(255, 255, 255, 0.25);
             border-radius: 9999px;
         }
+
         .ios-scrollbar::-webkit-scrollbar-thumb:hover {
             background: rgba(255, 255, 255, 0.4);
         }
 
         /* 3D floating animation */
         @keyframes floatSlow {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-7px) rotate(1deg); }
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-7px) rotate(1deg);
+            }
         }
+
         .animate-float {
             animation: floatSlow 5.5s ease-in-out infinite;
         }
 
         @keyframes pulseGlow {
-            0%, 100% { opacity: 0.35; filter: blur(20px); }
-            50% { opacity: 0.65; filter: blur(32px); }
+
+            0%,
+            100% {
+                opacity: 0.35;
+                filter: blur(20px);
+            }
+
+            50% {
+                opacity: 0.65;
+                filter: blur(32px);
+            }
         }
+
         .animate-glow {
             animation: pulseGlow 4s ease-in-out infinite;
         }
 
         /* Radar scan animation */
         @keyframes radarSweep {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
+
         .animate-radar {
             animation: radarSweep 4.5s linear infinite;
         }
@@ -196,6 +229,7 @@
             transform: translateY(12px) scale(0.99);
             transition: opacity 0.35s var(--ios-ease), transform 0.35s var(--ios-ease);
         }
+
         .tab-pane.active {
             display: block;
             opacity: 1;
@@ -205,6 +239,7 @@
         .text-glow {
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
         }
+
         .number-glow {
             text-shadow: 0 4px 18px rgba(0, 0, 0, 0.6);
             font-feature-settings: "tnum" 1;
@@ -216,7 +251,7 @@
             backdrop-filter: blur(35px) saturate(210%);
             -webkit-backdrop-filter: blur(35px) saturate(210%);
             border: 1px solid rgba(255, 255, 255, 0.18);
-            box-shadow: 
+            box-shadow:
                 inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.35),
                 0 22px 50px rgba(0, 0, 0, 0.8);
         }
@@ -233,20 +268,30 @@
         }
 
         @keyframes badgePulseWarning {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(255, 107, 0, 0.4); }
-            50% { box-shadow: 0 0 14px 4px rgba(255, 107, 0, 0.7); }
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 107, 0, 0.4);
+            }
+
+            50% {
+                box-shadow: 0 0 14px 4px rgba(255, 107, 0, 0.7);
+            }
         }
+
         .badge-pulse {
             animation: badgePulseWarning 2.5s infinite;
         }
     </style>
 </head>
+
 <body class="relative flex flex-col justify-between overflow-x-hidden">
 
     <!-- ========================================== -->
     <!-- GLOBAL SVG SPRITE DEFINITIONS FOR 3D ICONS -->
     <!-- ========================================== -->
-    <svg style="position: absolute; width: 0; height: 0; overflow: hidden; pointer-events: none;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <svg style="position: absolute; width: 0; height: 0; overflow: hidden; pointer-events: none;" aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg">
         <defs>
             <!-- 3D Cloud Gradients -->
             <radialGradient id="gCloudTop" cx="35%" cy="25%" r="75%">
@@ -319,9 +364,15 @@
 
     <!-- Atmospheric Dynamic Backdrop Images -->
     <div id="backdropContainer" class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-        <div id="bgStorm" class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-100 scale-105 transform ease-out" style="background-image: url('./images/bg-storm.jpg');"></div>
-        <div id="bgNight" class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-0 scale-105 transform ease-out" style="background-image: url('./images/bg-night.jpg');"></div>
-        <div id="bgDay" class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-0 scale-105 transform ease-out" style="background-image: url('./images/bg-day.jpg');"></div>
+        <div id="bgStorm"
+            class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-100 scale-105 transform ease-out"
+            style="background-image: url('./images/bg-storm.jpg');"></div>
+        <div id="bgNight"
+            class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-0 scale-105 transform ease-out"
+            style="background-image: url('./images/bg-night.jpg');"></div>
+        <div id="bgDay"
+            class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-0 scale-105 transform ease-out"
+            style="background-image: url('./images/bg-day.jpg');"></div>
         <!-- Atmospheric Dark Vignette & Gradient Mist Overlay -->
         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-black/65 pointer-events-none"></div>
     </div>
@@ -336,58 +387,79 @@
         <!-- ========================================== -->
         <!-- DESKTOP / IPAD LEFT SIDEBAR DOCK (Image 2) -->
         <!-- ========================================== -->
-        <aside class="hidden lg:flex flex-col items-center justify-between w-24 xl:w-28 py-8 px-4 border-r border-white/10 liquid-glass sticky top-0 h-screen select-none">
+        <aside
+            class="hidden lg:flex flex-col items-center justify-between w-24 xl:w-28 py-8 px-4 border-r border-white/10 liquid-glass sticky top-0 h-screen select-none">
             <!-- Top: App Brand Mark -->
             <div class="flex flex-col items-center gap-6">
-                <div class="w-12 h-12 rounded-2xl liquid-glass border border-white/20 shadow-lg flex items-center justify-center text-xl cursor-pointer ios-btn hover:border-white/40 transition-all" id="appLogoBtn" title="Horizon Weather">
+                <div class="w-12 h-12 rounded-2xl liquid-glass border border-white/20 shadow-lg flex items-center justify-center text-xl cursor-pointer ios-btn hover:border-white/40 transition-all"
+                    id="appLogoBtn" title="Horizon Weather">
                     <span class="text-2xl drop-shadow">🌤️</span>
                 </div>
 
                 <!-- Navigation Sidebar Pills -->
                 <nav class="flex flex-col gap-4 mt-4" id="desktopNav">
                     <!-- Home -->
-                    <button data-tab="tab-home" class="sidebar-tab-btn active p-3.5 rounded-2xl text-white bg-white/15 border border-white/20 shadow-md ios-btn" title="Dashboard">
+                    <button data-tab="tab-home"
+                        class="sidebar-tab-btn active p-3.5 rounded-2xl text-white bg-white/15 border border-white/20 shadow-md ios-btn"
+                        title="Dashboard">
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2L2 12h3v8h6v-6h2v6h6v-8h3L12 2z"/>
+                            <path d="M12 2L2 12h3v8h6v-6h2v6h6v-8h3L12 2z" />
                         </svg>
                     </button>
                     <!-- 7-Day / Forecast -->
-                    <button data-tab="tab-forecast" class="sidebar-tab-btn p-3.5 rounded-2xl text-white/60 hover:text-white hover:bg-white/10 border border-transparent hover:border-white/10 transition-all ios-btn" title="7-Day Forecast">
+                    <button data-tab="tab-forecast"
+                        class="sidebar-tab-btn p-3.5 rounded-2xl text-white/60 hover:text-white hover:bg-white/10 border border-transparent hover:border-white/10 transition-all ios-btn"
+                        title="7-Day Forecast">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                         </svg>
                     </button>
                     <!-- Location / Saved Cities -->
-                    <button data-tab="tab-search" class="sidebar-tab-btn p-3.5 rounded-2xl text-white/60 hover:text-white hover:bg-white/10 border border-transparent hover:border-white/10 transition-all ios-btn" title="Search & Saved Cities">
+                    <button data-tab="tab-search"
+                        class="sidebar-tab-btn p-3.5 rounded-2xl text-white/60 hover:text-white hover:bg-white/10 border border-transparent hover:border-white/10 transition-all ios-btn"
+                        title="Search & Saved Cities">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                         </svg>
                     </button>
                     <!-- Live Conditions / Radar -->
-                    <button data-tab="tab-conditions" class="sidebar-tab-btn p-3.5 rounded-2xl text-white/60 hover:text-white hover:bg-white/10 border border-transparent hover:border-white/10 transition-all ios-btn" title="Live Analytics & Wind Map">
+                    <button data-tab="tab-conditions"
+                        class="sidebar-tab-btn p-3.5 rounded-2xl text-white/60 hover:text-white hover:bg-white/10 border border-transparent hover:border-white/10 transition-all ios-btn"
+                        title="Live Analytics & Wind Map">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                         </svg>
                     </button>
                     <!-- Settings -->
-                    <button id="openSettingsModalDesktop" class="p-3.5 rounded-2xl text-white/60 hover:text-white hover:bg-white/10 border border-transparent hover:border-white/10 transition-all ios-btn" title="Settings & Haptics">
+                    <button id="openSettingsModalDesktop"
+                        class="p-3.5 rounded-2xl text-white/60 hover:text-white hover:bg-white/10 border border-transparent hover:border-white/10 transition-all ios-btn"
+                        title="Settings & Haptics">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                         </svg>
                     </button>
                 </nav>
             </div>
 
             <!-- Bottom: Updated Status & Refresh Trigger -->
-            <button id="desktopRefreshBtn" class="flex flex-col items-center gap-1.5 text-white/50 hover:text-white transition-all ios-btn group" title="Refresh Live Weather">
+            <button id="desktopRefreshBtn"
+                class="flex flex-col items-center gap-1.5 text-white/50 hover:text-white transition-all ios-btn group"
+                title="Refresh Live Weather">
                 <div class="p-2 rounded-full bg-white/5 group-hover:bg-white/15 border border-white/10 transition-all">
-                    <svg id="refreshIcon" class="w-5 h-5 transition-transform duration-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                    <svg id="refreshIcon" class="w-5 h-5 transition-transform duration-700" fill="none"
+                        stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                     </svg>
                 </div>
-                <span class="text-[10px] uppercase font-semibold tracking-wider text-center">Updated<br><span id="lastUpdatedTime" class="text-white/80 lowercase">just now</span></span>
+                <span class="text-[10px] uppercase font-semibold tracking-wider text-center">Updated<br><span
+                        id="lastUpdatedTime" class="text-white/80 lowercase">just now</span></span>
             </button>
         </aside>
 
@@ -400,11 +472,13 @@
             <!-- TOP BAR (Clean Minimalist iOS Style) -->
             <!-- ========================================== -->
             <header class="flex items-center justify-between gap-4 mb-5 pt-1">
-                
+
                 <!-- Left: 4-Dot Grid Button on Mobile / Location on Desktop -->
                 <div class="flex items-center gap-3">
                     <!-- Mobile Grid View Trigger Button (Image 1 top left) -->
-                    <button id="mobileGridBtn" class="p-2.5 rounded-2xl liquid-glass-subtle border border-white/15 text-white/90 ios-btn" title="Saved Cities Grid">
+                    <button id="mobileGridBtn"
+                        class="p-2.5 rounded-2xl liquid-glass-subtle border border-white/15 text-white/90 ios-btn"
+                        title="Saved Cities Grid">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                             <rect x="3" y="3" width="7" height="7" rx="2" />
                             <rect x="14" y="3" width="7" height="7" rx="2" />
@@ -416,14 +490,29 @@
                     <!-- City Title & Date (Mobile centered or clean, Desktop full) -->
                     <div>
                         <div class="flex items-center gap-2">
-                            <svg class="w-4 h-4 text-ios-teal drop-shadow hidden sm:inline" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                            <svg class="w-4 h-4 text-ios-teal drop-shadow hidden sm:inline" fill="currentColor"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
                             </svg>
-                            <h1 id="currentCityTitle" class="text-lg sm:text-2xl font-bold tracking-tight text-white text-glow">New York</h1>
+                            <h1 id="currentCityTitle"
+                                class="text-lg sm:text-2xl font-bold tracking-tight text-white text-glow">New York</h1>
+                            <!-- Save/Bookmark City Button -->
+                            <button id="toggleSaveCurrentCityBtn"
+                                class="p-1.5 rounded-full liquid-glass-subtle hover:bg-white/15 border border-white/15 text-white/50 hover:text-ios-amber transition-all ios-btn"
+                                title="Save to my cities">
+                                <svg id="saveCurrentCityStar" class="w-4 h-4 transition-transform duration-200"
+                                    fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                                </svg>
+                            </button>
                         </div>
                         <div class="flex items-center gap-2 sm:ml-6 mt-0.5">
                             <p id="currentDateSubtitle" class="text-xs text-white/65 font-medium">Mostly Sunny</p>
-                            <span id="liveDataBadge" class="hidden text-[10px] font-bold px-2 py-0.5 rounded-full bg-ios-teal/20 text-ios-teal border border-ios-teal/40">● Live OpenWeather</span>
+                            <span id="liveDataBadge"
+                                class="hidden text-[10px] font-bold px-2 py-0.5 rounded-full bg-ios-teal/20 text-ios-teal border border-ios-teal/40">●
+                                Live OpenWeather</span>
                         </div>
                     </div>
                 </div>
@@ -432,47 +521,54 @@
                 <div class="flex items-center gap-2 sm:gap-3">
                     <!-- Desktop Search Input (Hidden on tiny mobile, full on tablet/desktop) -->
                     <div class="relative hidden sm:block">
-                        <div class="flex items-center liquid-glass rounded-full px-3.5 py-1.5 border border-white/15 focus-within:border-ios-teal/70 transition-all shadow-lg">
-                            <svg class="w-4 h-4 text-white/60 mr-2 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                                <circle cx="11" cy="11" r="8"/>
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35"/>
+                        <div
+                            class="flex items-center liquid-glass rounded-full px-3.5 py-1.5 border border-white/15 focus-within:border-ios-teal/70 transition-all shadow-lg">
+                            <svg class="w-4 h-4 text-white/60 mr-2 flex-shrink-0" fill="none" stroke="currentColor"
+                                stroke-width="2" viewBox="0 0 24 24">
+                                <circle cx="11" cy="11" r="8" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35" />
                             </svg>
-                            <input 
-                                type="text" 
-                                id="citySearchInput" 
-                                placeholder="Search city..." 
+                            <input type="text" id="citySearchInput" placeholder="Search city..."
                                 class="bg-transparent border-none outline-none text-sm text-white placeholder-white/50 w-36 md:w-52 transition-all"
-                                autocomplete="off"
-                            >
-                            <button id="clearSearchBtn" class="hidden text-white/40 hover:text-white text-xs p-1">✕</button>
+                                autocomplete="off">
+                            <button id="clearSearchBtn"
+                                class="hidden text-white/40 hover:text-white text-xs p-1">✕</button>
                         </div>
 
                         <!-- Live Search Results Liquid Dropdown -->
-                        <div id="searchResultsDropdown" class="absolute top-full left-0 right-0 mt-2 z-50 hidden rounded-2xl liquid-glass border border-white/20 p-2 shadow-2xl max-h-72 overflow-y-auto ios-scrollbar">
+                        <div id="searchResultsDropdown"
+                            class="absolute top-full left-0 right-0 mt-2 z-50 hidden rounded-2xl liquid-glass border border-white/20 p-2 shadow-2xl max-h-72 overflow-y-auto ios-scrollbar">
                             <!-- Populated dynamically via JS -->
                         </div>
                     </div>
 
                     <!-- Geolocation Quick Button -->
-                    <button id="geoLocateBtn" class="p-2 sm:p-2.5 rounded-full liquid-glass border border-white/15 text-white/80 hover:text-white hover:border-white/30 shadow-lg ios-btn" title="Use Current GPS Location">
-                        <svg class="w-4 h-4 text-ios-teal" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                    <button id="geoLocateBtn"
+                        class="p-2 sm:p-2.5 rounded-full liquid-glass border border-white/15 text-white/80 hover:text-white hover:border-white/30 shadow-lg ios-btn"
+                        title="Use Current GPS Location">
+                        <svg class="w-4 h-4 text-ios-teal" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                         </svg>
                     </button>
 
                     <!-- Unit Switcher Capsule (°C / °F) -->
-                    <button id="unitToggleBtn" class="flex items-center liquid-glass rounded-full px-3 py-1.5 border border-white/15 text-xs font-bold text-white shadow-lg ios-btn" title="Toggle °C / °F">
+                    <button id="unitToggleBtn"
+                        class="flex items-center liquid-glass rounded-full px-3 py-1.5 border border-white/15 text-xs font-bold text-white shadow-lg ios-btn"
+                        title="Toggle °C / °F">
                         <span id="unitCelsius" class="text-white">°C</span>
                         <span class="mx-1 text-white/30">|</span>
                         <span id="unitFahrenheit" class="text-white/40">°F</span>
                     </button>
 
                     <!-- 3-Dot Options Menu Button (Image 1 top right) -->
-                    <button id="mobileOptionsBtn" class="p-2 sm:p-2.5 rounded-full liquid-glass border border-white/15 text-white/80 hover:text-white ios-btn" title="Preferences">
+                    <button id="mobileOptionsBtn"
+                        class="p-2 sm:p-2.5 rounded-full liquid-glass border border-white/15 text-white/80 hover:text-white ios-btn"
+                        title="Preferences">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                            <circle cx="12" cy="5" r="2"/>
-                            <circle cx="12" cy="12" r="2"/>
-                            <circle cx="12" cy="19" r="2"/>
+                            <circle cx="12" cy="5" r="2" />
+                            <circle cx="12" cy="12" r="2" />
+                            <circle cx="12" cy="19" r="2" />
                         </svg>
                     </button>
                 </div>
@@ -493,70 +589,100 @@
                     <div class="lg:col-span-7 xl:col-span-8 flex flex-col gap-6">
 
                         <!-- HERO WEATHER CARD (Image 1 Screen 1 & Image 2) -->
-                        <div class="liquid-glass rounded-3xl p-6 sm:p-8 tilt-card shadow-2xl relative overflow-hidden group">
-                            
+                        <div
+                            class="liquid-glass rounded-3xl p-6 sm:p-8 tilt-card shadow-2xl relative overflow-hidden group">
+
                             <!-- Ambient Glow in Card -->
-                            <div class="absolute -top-16 -right-16 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl pointer-events-none animate-glow"></div>
-                            <div class="absolute -bottom-16 -left-16 w-64 h-64 bg-amber-500/15 rounded-full blur-3xl pointer-events-none animate-glow"></div>
+                            <div
+                                class="absolute -top-16 -right-16 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl pointer-events-none animate-glow">
+                            </div>
+                            <div
+                                class="absolute -bottom-16 -left-16 w-64 h-64 bg-amber-500/15 rounded-full blur-3xl pointer-events-none animate-glow">
+                            </div>
 
                             <!-- Floating 3D Weather Artwork Icon (Centered on mobile matching Image 1, side by side on desktop) -->
                             <div class="flex flex-col md:flex-row items-center justify-between gap-4 relative z-10">
-                                
+
                                 <div class="text-center md:text-left">
                                     <div class="flex items-baseline justify-center md:justify-start gap-3">
-                                        <span id="heroTemp" class="text-6xl sm:text-7xl xl:text-8xl font-light tracking-tighter text-white number-glow">23°</span>
+                                        <span id="heroTemp"
+                                            class="text-6xl sm:text-7xl xl:text-8xl font-light tracking-tighter text-white number-glow">23°</span>
                                         <div class="flex flex-col text-left">
-                                            <span id="heroConditionMain" class="text-2xl sm:text-3xl font-semibold text-white tracking-tight text-glow">Mostly Sunny</span>
-                                            <span id="heroConditionDetail" class="text-xs sm:text-sm text-white/70">Partly cloudy with gentle refreshing breeze</span>
+                                            <span id="heroConditionMain"
+                                                class="text-2xl sm:text-3xl font-semibold text-white tracking-tight text-glow">Mostly
+                                                Sunny</span>
+                                            <span id="heroConditionDetail"
+                                                class="text-xs sm:text-sm text-white/70">Partly cloudy with gentle
+                                                refreshing breeze</span>
                                         </div>
                                     </div>
-                                    <div class="flex items-center justify-center md:justify-start gap-2.5 mt-3 text-xs sm:text-sm font-medium text-white/80">
-                                        <span class="bg-white/10 px-3 py-1 rounded-full border border-white/10">H <span id="heroTempHigh">29°</span></span>
-                                        <span class="bg-white/10 px-3 py-1 rounded-full border border-white/10">L <span id="heroTempLow">12°</span></span>
-                                        <span class="text-white/60">Feels like <span id="heroFeelsLike" class="text-white font-semibold">24°</span></span>
+                                    <div
+                                        class="flex items-center justify-center md:justify-start gap-2.5 mt-3 text-xs sm:text-sm font-medium text-white/80">
+                                        <span class="bg-white/10 px-3 py-1 rounded-full border border-white/10">H <span
+                                                id="heroTempHigh">29°</span></span>
+                                        <span class="bg-white/10 px-3 py-1 rounded-full border border-white/10">L <span
+                                                id="heroTempLow">12°</span></span>
+                                        <span class="text-white/60">Feels like <span id="heroFeelsLike"
+                                                class="text-white font-semibold">24°</span></span>
                                     </div>
                                 </div>
 
                                 <!-- Floating 3D Weather Artwork Icon -->
                                 <div class="my-2 md:my-0">
-                                    <div id="hero3DIconContainer" class="w-40 h-40 sm:w-48 sm:h-48 flex items-center justify-center animate-float drop-shadow-[0_25px_35px_rgba(0,0,0,0.6)]">
+                                    <div id="hero3DIconContainer"
+                                        class="w-40 h-40 sm:w-48 sm:h-48 flex items-center justify-center animate-float drop-shadow-[0_25px_35px_rgba(0,0,0,0.6)]">
                                         <!-- Injected dynamically -->
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Frosted AI Weather Capsule Description (Image 2) -->
-                            <div class="mt-4 p-4 rounded-2xl liquid-glass-subtle border border-white/10 text-xs sm:text-sm text-white/80 leading-relaxed flex items-center gap-3">
-                                <div class="w-8 h-8 rounded-full bg-ios-teal/20 border border-ios-teal/40 flex items-center justify-center flex-shrink-0 text-ios-teal">
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            <div
+                                class="mt-4 p-4 rounded-2xl liquid-glass-subtle border border-white/10 text-xs sm:text-sm text-white/80 leading-relaxed flex items-center gap-3">
+                                <div
+                                    class="w-8 h-8 rounded-full bg-ios-teal/20 border border-ios-teal/40 flex items-center justify-center flex-shrink-0 text-ios-teal">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M13 10V3L4 14h7v7l9-11h-7z" />
                                     </svg>
                                 </div>
-                                <p id="heroAiNarrative">With real-time atmospheric radar and precision data, conditions are optimal for outdoor activities. Thunderstorm risk peaks later tonight.</p>
+                                <p id="heroAiNarrative">With real-time atmospheric radar and precision data, conditions
+                                    are optimal for outdoor activities. Thunderstorm risk peaks later tonight.</p>
                             </div>
 
                             <!-- QUICK STATS 3-PILL ROW (Image 1 Center Pill) -->
                             <div class="grid grid-cols-3 gap-3 mt-5 pt-5 border-t border-white/10">
                                 <!-- Precipitation -->
-                                <div class="flex flex-col items-center justify-center p-3 rounded-2xl liquid-glass-subtle border border-white/10 text-center">
-                                    <svg class="w-6 h-6 text-ios-teal mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+                                <div
+                                    class="flex flex-col items-center justify-center p-3 rounded-2xl liquid-glass-subtle border border-white/10 text-center">
+                                    <svg class="w-6 h-6 text-ios-teal mb-1" fill="none" stroke="currentColor"
+                                        stroke-width="2" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M19 14l-7 7m0 0l-7-7m7 7V3" />
                                     </svg>
                                     <span id="quickPrecip" class="text-base sm:text-lg font-bold text-white">30%</span>
                                     <span class="text-[11px] text-white/60 font-medium">Precipitation</span>
                                 </div>
                                 <!-- Humidity -->
-                                <div class="flex flex-col items-center justify-center p-3 rounded-2xl liquid-glass-subtle border border-white/10 text-center">
-                                    <svg class="w-6 h-6 text-blue-400 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/>
+                                <div
+                                    class="flex flex-col items-center justify-center p-3 rounded-2xl liquid-glass-subtle border border-white/10 text-center">
+                                    <svg class="w-6 h-6 text-blue-400 mb-1" fill="none" stroke="currentColor"
+                                        stroke-width="2" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z" />
                                     </svg>
-                                    <span id="quickHumidity" class="text-base sm:text-lg font-bold text-white">20%</span>
+                                    <span id="quickHumidity"
+                                        class="text-base sm:text-lg font-bold text-white">20%</span>
                                     <span class="text-[11px] text-white/60 font-medium">Humidity</span>
                                 </div>
                                 <!-- Wind Speed -->
-                                <div class="flex flex-col items-center justify-center p-3 rounded-2xl liquid-glass-subtle border border-white/10 text-center">
-                                    <svg class="w-6 h-6 text-ios-amber mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                                <div
+                                    class="flex flex-col items-center justify-center p-3 rounded-2xl liquid-glass-subtle border border-white/10 text-center">
+                                    <svg class="w-6 h-6 text-ios-amber mb-1" fill="none" stroke="currentColor"
+                                        stroke-width="2" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M14 5l7 7m0 0l-7 7m7-7H3" />
                                     </svg>
                                     <span id="quickWind" class="text-base sm:text-lg font-bold text-white">9 km/h</span>
                                     <span class="text-[11px] text-white/60 font-medium">Wind Speed</span>
@@ -572,12 +698,14 @@
                                     <span class="text-sm font-bold text-white tracking-wide uppercase">Today</span>
                                     <span class="text-xs text-white/50">24-Hour Timeline</span>
                                 </div>
-                                <button data-tab="tab-forecast" class="text-xs text-ios-teal font-semibold hover:underline ios-btn">
+                                <button data-tab="tab-forecast"
+                                    class="text-xs text-ios-teal font-semibold hover:underline ios-btn">
                                     7-Day Forecasts &rarr;
                                 </button>
                             </div>
                             <!-- Scrollable Hourly Capsules -->
-                            <div id="hourlyCapsulesContainer" class="flex items-center gap-3 overflow-x-auto pb-2 ios-scrollbar">
+                            <div id="hourlyCapsulesContainer"
+                                class="flex items-center gap-3 overflow-x-auto pb-2 ios-scrollbar">
                                 <!-- Dynamic hourly capsules -->
                             </div>
                         </div>
@@ -588,7 +716,8 @@
                                 <span class="text-sm font-bold text-white tracking-wide uppercase">7-Day Outlook</span>
                                 <span class="text-xs text-white/50">Next 7 Days Trend</span>
                             </div>
-                            <div id="weeklyCardsContainer" class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2.5">
+                            <div id="weeklyCardsContainer"
+                                class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2.5">
                                 <!-- Dynamic weekly cards -->
                             </div>
                         </div>
@@ -604,27 +733,31 @@
                         <div class="liquid-glass rounded-3xl p-6 shadow-2xl tilt-card relative overflow-hidden">
                             <div class="flex items-center justify-between mb-2">
                                 <h3 class="text-base font-bold text-white">Live Conditions</h3>
-                                <svg class="w-4 h-4 text-white/60" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                                <svg class="w-4 h-4 text-white/60" fill="none" stroke="currentColor" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                                 </svg>
                             </div>
 
                             <!-- Trend Indicator & Status Badge -->
                             <div class="flex items-center justify-between my-3">
                                 <div class="flex items-center gap-1.5 text-ios-amber font-semibold text-sm">
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/>
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
                                     </svg>
                                     <span id="liveConditionTrend">23.8% UV / Index</span>
                                 </div>
-                                <span id="conditionStatusBadge" class="px-3 py-1 rounded-full text-xs font-bold bg-ios-orange/20 border border-ios-orange text-ios-orange badge-pulse">
+                                <span id="conditionStatusBadge"
+                                    class="px-3 py-1 rounded-full text-xs font-bold bg-ios-orange/20 border border-ios-orange text-ios-orange badge-pulse">
                                     Elevated
                                 </span>
                             </div>
 
                             <!-- INTERACTIVE SMOOTH BEZIER WAVE GRAPH -->
                             <div class="relative w-full h-32 my-4">
-                                <svg id="bezierWaveSvg" class="w-full h-full overflow-visible" viewBox="0 0 320 100" preserveAspectRatio="none">
+                                <svg id="bezierWaveSvg" class="w-full h-full overflow-visible" viewBox="0 0 320 100"
+                                    preserveAspectRatio="none">
                                     <defs>
                                         <linearGradient id="waveLineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
                                             <stop offset="0%" stop-color="#0A84FF" />
@@ -637,14 +770,19 @@
                                         </linearGradient>
                                     </defs>
                                     <!-- Area fill below curve -->
-                                    <path id="waveAreaPath" d="M 0 65 Q 80 85 160 40 T 320 30 L 320 100 L 0 100 Z" fill="url(#waveAreaGrad)" />
+                                    <path id="waveAreaPath" d="M 0 65 Q 80 85 160 40 T 320 30 L 320 100 L 0 100 Z"
+                                        fill="url(#waveAreaGrad)" />
                                     <!-- Main glowing line -->
-                                    <path id="waveCurvePath" d="M 0 65 Q 80 85 160 40 T 320 30" fill="none" stroke="url(#waveLineGrad)" stroke-width="3.5" stroke-linecap="round" filter="url(#fBoltGlow)" />
+                                    <path id="waveCurvePath" d="M 0 65 Q 80 85 160 40 T 320 30" fill="none"
+                                        stroke="url(#waveLineGrad)" stroke-width="3.5" stroke-linecap="round"
+                                        filter="url(#fBoltGlow)" />
                                     <!-- Active Pulsing Target Point -->
-                                    <circle id="waveTargetPoint" cx="260" cy="35" r="5" fill="#FFFFFF" stroke="#FF6B00" stroke-width="3" class="filter drop-shadow-[0_0_8px_#FF6B00]" />
+                                    <circle id="waveTargetPoint" cx="260" cy="35" r="5" fill="#FFFFFF" stroke="#FF6B00"
+                                        stroke-width="3" class="filter drop-shadow-[0_0_8px_#FF6B00]" />
                                 </svg>
                                 <!-- Floating Graph Value Tooltip -->
-                                <div id="graphTooltip" class="absolute top-2 right-12 bg-black/80 px-2 py-0.5 rounded text-[11px] text-white border border-white/20">
+                                <div id="graphTooltip"
+                                    class="absolute top-2 right-12 bg-black/80 px-2 py-0.5 rounded text-[11px] text-white border border-white/20">
                                     Peak 28° @ 3 PM
                                 </div>
                             </div>
@@ -670,7 +808,9 @@
                         <div class="liquid-glass rounded-3xl p-6 shadow-xl">
                             <div class="flex items-center justify-between mb-4">
                                 <h3 class="text-base font-bold text-white">Recently Searched</h3>
-                                <button data-tab="tab-search" class="text-xs text-ios-teal font-semibold hover:underline ios-btn">See All &gt;</button>
+                                <button data-tab="tab-search"
+                                    class="text-xs text-ios-teal font-semibold hover:underline ios-btn">See All
+                                    &gt;</button>
                             </div>
                             <div id="recentlySearchedContainer" class="flex flex-col gap-3">
                                 <!-- Populated dynamically -->
@@ -682,38 +822,55 @@
                             <div class="flex items-center justify-between mb-3 relative z-10">
                                 <div>
                                     <h3 class="text-base font-bold text-white">Wind Map & Radar</h3>
-                                    <p class="text-xs text-white/60"><span id="radarSpeed">12 km/h</span> • <span id="radarDirection">Northwest</span></p>
+                                    <p class="text-xs text-white/60"><span id="radarSpeed">12 km/h</span> • <span
+                                            id="radarDirection">Northwest</span></p>
                                 </div>
                                 <!-- Interactive Compass Needle -->
-                                <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center border border-white/20" title="Wind Direction">
-                                    <svg id="compassArrow" class="w-4 h-4 text-ios-teal transform transition-transform duration-700" style="transform: rotate(-45deg);" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z"/>
+                                <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center border border-white/20"
+                                    title="Wind Direction">
+                                    <svg id="compassArrow"
+                                        class="w-4 h-4 text-ios-teal transform transition-transform duration-700"
+                                        style="transform: rotate(-45deg);" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z" />
                                     </svg>
                                 </div>
                             </div>
 
                             <!-- Live Wind Particle Stream Canvas -->
-                            <div class="relative w-full h-36 rounded-2xl overflow-hidden bg-gradient-to-br from-black/85 via-[#0c1322] to-black/90 border border-white/10 flex items-center justify-center cursor-pointer ios-btn" id="windRadarWidget" title="Click to pulse radar sweep">
+                            <div class="relative w-full h-36 rounded-2xl overflow-hidden bg-gradient-to-br from-black/85 via-[#0c1322] to-black/90 border border-white/10 flex items-center justify-center cursor-pointer ios-btn"
+                                id="windRadarWidget" title="Click to pulse radar sweep">
                                 <!-- Dynamic flowing wind streamlines -->
-                                <canvas id="windStreamCanvas" class="absolute inset-0 w-full h-full pointer-events-none"></canvas>
-                                
+                                <canvas id="windStreamCanvas"
+                                    class="absolute inset-0 w-full h-full pointer-events-none"></canvas>
+
                                 <!-- Distance Range Rings -->
-                                <div class="absolute w-44 h-44 rounded-full border border-ios-teal/15 pointer-events-none"></div>
-                                <div class="absolute w-28 h-28 rounded-full border border-white/10 pointer-events-none"></div>
-                                <div class="absolute w-14 h-14 rounded-full border border-white/15 pointer-events-none"></div>
-                                
+                                <div
+                                    class="absolute w-44 h-44 rounded-full border border-ios-teal/15 pointer-events-none">
+                                </div>
+                                <div class="absolute w-28 h-28 rounded-full border border-white/10 pointer-events-none">
+                                </div>
+                                <div class="absolute w-14 h-14 rounded-full border border-white/15 pointer-events-none">
+                                </div>
+
                                 <!-- Radar Circular Sweep Scanner -->
-                                <div class="absolute w-44 h-44 rounded-full pointer-events-none animate-radar flex items-center justify-center">
+                                <div
+                                    class="absolute w-44 h-44 rounded-full pointer-events-none animate-radar flex items-center justify-center">
                                     <!-- Smooth Conic Radar Sweep Beam -->
-                                    <div class="w-full h-full rounded-full" style="background: conic-gradient(from 0deg at 50% 50%, rgba(100, 210, 255, 0.4) 0deg, rgba(100, 210, 255, 0.12) 30deg, rgba(10, 132, 255, 0.02) 65deg, transparent 75deg, transparent 360deg);"></div>
+                                    <div class="w-full h-full rounded-full"
+                                        style="background: conic-gradient(from 0deg at 50% 50%, rgba(100, 210, 255, 0.4) 0deg, rgba(100, 210, 255, 0.12) 30deg, rgba(10, 132, 255, 0.02) 65deg, transparent 75deg, transparent 360deg);">
+                                    </div>
                                     <!-- Crisp Glowing Radar Leading Edge Sweep Line -->
-                                    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1.5px] h-1/2 bg-gradient-to-b from-ios-teal via-ios-teal/80 to-transparent shadow-[0_0_10px_#64D2FF]"></div>
+                                    <div
+                                        class="absolute top-0 left-1/2 -translate-x-1/2 w-[1.5px] h-1/2 bg-gradient-to-b from-ios-teal via-ios-teal/80 to-transparent shadow-[0_0_10px_#64D2FF]">
+                                    </div>
                                 </div>
 
                                 <!-- Central Target Pin -->
-                                <div class="relative z-10 w-9 h-9 rounded-full bg-white text-black flex items-center justify-center shadow-xl ring-4 ring-ios-teal/30">
+                                <div
+                                    class="relative z-10 w-9 h-9 rounded-full bg-white text-black flex items-center justify-center shadow-xl ring-4 ring-ios-teal/30">
                                     <svg class="w-5 h-5 text-[#080B11]" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                                        <path
+                                            d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
                                     </svg>
                                 </div>
                             </div>
@@ -728,9 +885,10 @@
             <!-- ========================================== -->
             <div id="tab-forecast" class="tab-pane flex-1 max-w-3xl mx-auto w-full">
                 <div class="flex items-center justify-between mb-6">
-                    <button class="back-to-home-btn p-2 rounded-full liquid-glass border border-white/15 text-white/80 ios-btn">
+                    <button
+                        class="back-to-home-btn p-2 rounded-full liquid-glass border border-white/15 text-white/80 ios-btn">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
                         </svg>
                     </button>
                     <h2 class="text-xl font-bold tracking-tight text-white">7 Days</h2>
@@ -738,7 +896,8 @@
                 </div>
 
                 <!-- Featured Top Weather Capsule in 7-Days -->
-                <div class="liquid-glass rounded-3xl p-6 mb-6 shadow-2xl relative overflow-hidden flex items-center justify-between">
+                <div
+                    class="liquid-glass rounded-3xl p-6 mb-6 shadow-2xl relative overflow-hidden flex items-center justify-between">
                     <div>
                         <div class="flex items-baseline gap-2">
                             <span id="forecastHeroTemp" class="text-5xl font-light text-white number-glow">23°</span>
@@ -760,32 +919,38 @@
             <!-- ========================================== -->
             <div id="tab-search" class="tab-pane flex-1 max-w-3xl mx-auto w-full">
                 <div class="flex items-center justify-between mb-6">
-                    <button class="back-to-home-btn p-2 rounded-full liquid-glass border border-white/15 text-white/80 ios-btn">
+                    <button
+                        class="back-to-home-btn p-2 rounded-full liquid-glass border border-white/15 text-white/80 ios-btn">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
                         </svg>
                     </button>
                     <h2 class="text-xl font-bold tracking-tight text-white">Explore Cities</h2>
-                    <button id="addCityModalTrigger" class="p-2 rounded-full liquid-glass border border-white/15 text-ios-teal font-bold ios-btn">
+                    <button id="addCityModalTrigger"
+                        class="p-2 rounded-full liquid-glass border border-white/15 text-ios-teal font-bold ios-btn">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/>
-                        </svg>
-                    </button>
+                            <button id="addCityModalTrigger"
+                                class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full liquid-glass border border-white/20 text-xs font-semibold text-ios-teal hover:border-ios-teal/50 hover:bg-white/10 transition-all ios-btn"
+                                title="Add city to this browser's list">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                                </svg>
+                                <span>Add City</span>
+                            </button>
                 </div>
 
                 <!-- Pill Search Bar (Matching Image 1 Screen 3 top search) -->
                 <div class="relative mb-6">
-                    <div class="flex items-center liquid-glass rounded-full px-5 py-3.5 border border-white/20 focus-within:border-ios-teal transition-all shadow-xl">
-                        <svg class="w-5 h-5 text-white/60 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <circle cx="11" cy="11" r="8"/>
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35"/>
+                    <div
+                        class="flex items-center liquid-glass rounded-full px-5 py-3.5 border border-white/20 focus-within:border-ios-teal transition-all shadow-xl">
+                        <svg class="w-5 h-5 text-white/60 mr-3" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <circle cx="11" cy="11" r="8" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35" />
                         </svg>
-                        <input 
-                            type="text" 
-                            id="fullViewSearchInput" 
-                            placeholder="California, Tokyo, London..." 
-                            class="bg-transparent border-none outline-none text-base text-white placeholder-white/50 w-full"
-                        >
+                        <input type="text" id="fullViewSearchInput" placeholder="California, Tokyo, London..."
+                            class="bg-transparent border-none outline-none text-base text-white placeholder-white/50 w-full">
                     </div>
                 </div>
 
@@ -800,9 +965,10 @@
             <!-- ========================================== -->
             <div id="tab-conditions" class="tab-pane flex-1 max-w-4xl mx-auto w-full">
                 <div class="flex items-center justify-between mb-6">
-                    <button class="back-to-home-btn p-2 rounded-full liquid-glass border border-white/15 text-white/80 ios-btn">
+                    <button
+                        class="back-to-home-btn p-2 rounded-full liquid-glass border border-white/15 text-white/80 ios-btn">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
                         </svg>
                     </button>
                     <h2 class="text-xl font-bold tracking-tight text-white">Live Environmental Conditions</h2>
@@ -811,12 +977,14 @@
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                     <div class="liquid-glass rounded-3xl p-6 shadow-xl">
-                        <span class="text-xs font-semibold text-white/60 uppercase tracking-wider">Air Quality (AQI)</span>
+                        <span class="text-xs font-semibold text-white/60 uppercase tracking-wider">Air Quality
+                            (AQI)</span>
                         <div class="flex items-baseline gap-3 my-3">
                             <span class="text-4xl font-bold text-ios-green">34</span>
                             <span class="text-sm font-semibold text-ios-green">Good</span>
                         </div>
-                        <p class="text-xs text-white/70">Air quality is satisfactory, and air pollution poses little or no risk.</p>
+                        <p class="text-xs text-white/70">Air quality is satisfactory, and air pollution poses little or
+                            no risk.</p>
                         <div class="w-full bg-white/10 h-1.5 rounded-full mt-4 overflow-hidden">
                             <div class="bg-ios-green h-full w-[25%] rounded-full"></div>
                         </div>
@@ -830,7 +998,9 @@
                         </div>
                         <p class="text-xs text-white/70">Take precautions during midday. Sunscreen recommended.</p>
                         <div class="w-full bg-white/10 h-1.5 rounded-full mt-4 overflow-hidden">
-                            <div class="bg-gradient-to-r from-ios-green via-ios-amber to-ios-red h-full w-[45%] rounded-full"></div>
+                            <div
+                                class="bg-gradient-to-r from-ios-green via-ios-amber to-ios-red h-full w-[45%] rounded-full">
+                            </div>
                         </div>
                     </div>
 
@@ -857,30 +1027,37 @@
     <!-- ========================================== -->
     <!-- MOBILE FLOATING GLASS DOCK (Image 1 Bottom Dock) -->
     <!-- ========================================== -->
-    <nav class="lg:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-[88%] max-w-sm glass-dock rounded-full px-5 py-3 flex items-center justify-between shadow-2xl">
+    <nav
+        class="lg:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-[88%] max-w-sm glass-dock rounded-full px-5 py-3 flex items-center justify-between shadow-2xl">
         <!-- Home -->
-        <button data-tab="tab-home" class="mobile-dock-btn active p-2.5 rounded-full text-white bg-white/20 ios-btn" title="Home">
+        <button data-tab="tab-home" class="mobile-dock-btn active p-2.5 rounded-full text-white bg-white/20 ios-btn"
+            title="Home">
             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2L2 12h3v8h6v-6h2v6h6v-8h3L12 2z"/>
+                <path d="M12 2L2 12h3v8h6v-6h2v6h6v-8h3L12 2z" />
             </svg>
         </button>
         <!-- Search -->
-        <button data-tab="tab-search" class="mobile-dock-btn p-2.5 rounded-full text-white/60 hover:text-white ios-btn" title="Search">
+        <button data-tab="tab-search" class="mobile-dock-btn p-2.5 rounded-full text-white/60 hover:text-white ios-btn"
+            title="Search">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <circle cx="11" cy="11" r="8"/>
-                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35"/>
+                <circle cx="11" cy="11" r="8" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35" />
             </svg>
         </button>
         <!-- 7-Day Forecast -->
-        <button data-tab="tab-forecast" class="mobile-dock-btn p-2.5 rounded-full text-white/60 hover:text-white ios-btn" title="Forecast">
+        <button data-tab="tab-forecast"
+            class="mobile-dock-btn p-2.5 rounded-full text-white/60 hover:text-white ios-btn" title="Forecast">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
             </svg>
         </button>
         <!-- Live Conditions / Analytics -->
-        <button data-tab="tab-conditions" class="mobile-dock-btn p-2.5 rounded-full text-white/60 hover:text-white ios-btn" title="Live Conditions">
+        <button data-tab="tab-conditions"
+            class="mobile-dock-btn p-2.5 rounded-full text-white/60 hover:text-white ios-btn" title="Live Conditions">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
             </svg>
         </button>
     </nav>
@@ -888,11 +1065,13 @@
     <!-- ========================================== -->
     <!-- SETTINGS & HAPTICS MODAL -->
     <!-- ========================================== -->
-    <div id="settingsModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md hidden transition-opacity duration-300">
+    <div id="settingsModal"
+        class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md hidden transition-opacity duration-300">
         <div class="liquid-glass rounded-3xl p-6 sm:p-8 max-w-md w-full border border-white/20 shadow-2xl relative">
             <div class="flex items-center justify-between mb-6">
                 <h3 class="text-lg font-bold text-white">Horizon Preferences</h3>
-                <button id="closeSettingsModal" class="p-2 rounded-full bg-white/10 text-white/70 hover:text-white ios-btn">✕</button>
+                <button id="closeSettingsModal"
+                    class="p-2 rounded-full bg-white/10 text-white/70 hover:text-white ios-btn">✕</button>
             </div>
 
             <div class="flex flex-col gap-4 text-sm">
@@ -901,15 +1080,20 @@
                     <div>
                         <span class="font-semibold text-white block">Taptic Engine & Sound</span>
                         <span class="text-xs text-white/60">Tactile clicks and iOS vibration</span>
+                        <span class="font-semibold text-white block">Haptic Feedback</span>
+                        <span class="text-xs text-white/60">Silent device vibration</span>
                     </div>
                     <label class="relative inline-flex items-center cursor-pointer">
                         <input type="checkbox" id="hapticsToggleInput" class="sr-only peer" checked>
-                        <div class="w-11 h-6 bg-white/20 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-ios-blue"></div>
+                        <div
+                            class="w-11 h-6 bg-white/20 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-ios-blue">
+                        </div>
                     </label>
                 </div>
 
                 <!-- Test Haptics Button -->
-                <button id="testHapticsBtn" class="w-full py-2.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-xs font-semibold text-white transition-all ios-btn flex items-center justify-center gap-2">
+                <button id="testHapticsBtn"
+                    class="w-full py-2.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-xs font-semibold text-white transition-all ios-btn flex items-center justify-center gap-2">
                     <span>⚡</span> Tap to Feel iOS Haptic Feedback
                 </button>
 
@@ -920,8 +1104,10 @@
                         <span class="text-xs text-white/60">Choose Celsius or Fahrenheit</span>
                     </div>
                     <div class="flex bg-black/40 rounded-lg p-1 border border-white/10">
-                        <button id="setCelsiusBtn" class="px-3 py-1 rounded text-xs font-bold bg-ios-blue text-white ios-btn">°C</button>
-                        <button id="setFahrenheitBtn" class="px-3 py-1 rounded text-xs font-bold text-white/50 ios-btn">°F</button>
+                        <button id="setCelsiusBtn"
+                            class="px-3 py-1 rounded text-xs font-bold bg-ios-blue text-white ios-btn">°C</button>
+                        <button id="setFahrenheitBtn"
+                            class="px-3 py-1 rounded text-xs font-bold text-white/50 ios-btn">°F</button>
                     </div>
                 </div>
 
@@ -933,7 +1119,9 @@
                     </div>
                     <label class="relative inline-flex items-center cursor-pointer">
                         <input type="checkbox" id="particlesToggleInput" class="sr-only peer" checked>
-                        <div class="w-11 h-6 bg-white/20 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-ios-blue"></div>
+                        <div
+                            class="w-11 h-6 bg-white/20 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-ios-blue">
+                        </div>
                     </label>
                 </div>
             </div>
@@ -947,21 +1135,20 @@
     <!-- ========================================== -->
     <!-- ADD CITY MODAL -->
     <!-- ========================================== -->
-    <div id="addCityModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md hidden transition-opacity duration-300">
+    <div id="addCityModal"
+        class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md hidden transition-opacity duration-300">
         <div class="liquid-glass rounded-3xl p-6 sm:p-8 max-w-md w-full border border-white/20 shadow-2xl relative">
             <div class="flex items-center justify-between mb-4">
                 <h3 class="text-lg font-bold text-white">Add City</h3>
-                <button id="closeAddCityModal" class="p-2 rounded-full bg-white/10 text-white/70 hover:text-white ios-btn">✕</button>
+                <button id="closeAddCityModal"
+                    class="p-2 rounded-full bg-white/10 text-white/70 hover:text-white ios-btn">✕</button>
             </div>
             <p class="text-xs text-white/60 mb-4">Search any city to add to your liquid glass favorites list.</p>
             <div class="flex gap-2">
-                <input 
-                    type="text" 
-                    id="addCityModalInput" 
-                    placeholder="Enter city (e.g. Paris, Tokyo, Sydney)..." 
-                    class="flex-1 bg-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-white/40 border border-white/15 outline-none focus:border-ios-teal"
-                >
-                <button id="confirmAddCityBtn" class="bg-ios-blue hover:bg-blue-600 px-5 py-2.5 rounded-xl font-bold text-sm text-white shadow-lg ios-btn">
+                <input type="text" id="addCityModalInput" placeholder="Enter city (e.g. Paris, Tokyo, Sydney)..."
+                    class="flex-1 bg-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-white/40 border border-white/15 outline-none focus:border-ios-teal">
+                <button id="confirmAddCityBtn"
+                    class="bg-ios-blue hover:bg-blue-600 px-5 py-2.5 rounded-xl font-bold text-sm text-white shadow-lg ios-btn">
                     Add
                 </button>
             </div>
@@ -975,6 +1162,7 @@
         /**
          * ========================================================
          * 1. APPLE TAPTIC ENGINE & WEB AUDIO HAPTICS SYNTHESIS
+         * 1. APPLE HAPTIC VIBRATION ENGINE (Silent Tactile)
          * ========================================================
          */
         class HapticEngine {
@@ -1025,19 +1213,25 @@
 
                     osc.start();
                     osc.stop(this.audioCtx.currentTime + duration);
-                } catch (e) {}
+                } catch (e) { }
             }
 
             light() {
                 if (!this.enabled) return;
                 if (navigator.vibrate) navigator.vibrate(10);
                 this.playClick(2100, 0.006, 0.09);
+                if (navigator.vibrate) {
+                    try { navigator.vibrate(12); } catch (e) { }
+                }
             }
 
             medium() {
                 if (!this.enabled) return;
                 if (navigator.vibrate) navigator.vibrate(22);
                 this.playClick(1400, 0.012, 0.15);
+                if (navigator.vibrate) {
+                    try { navigator.vibrate(22); } catch (e) { }
+                }
             }
 
             success() {
@@ -1045,12 +1239,22 @@
                 if (navigator.vibrate) navigator.vibrate([15, 30, 20]);
                 this.playClick(1200, 0.01, 0.12);
                 setTimeout(() => this.playClick(1800, 0.012, 0.14), 60);
+                if (navigator.vibrate) {
+                    try { navigator.vibrate([15, 30, 20]); } catch (e) { }
+                }
             }
 
             warning() {
                 if (!this.enabled) return;
                 if (navigator.vibrate) navigator.vibrate([30, 40, 30]);
                 this.playClick(400, 0.02, 0.2);
+                if (navigator.vibrate) {
+                    try { navigator.vibrate([30, 40, 30]); } catch (e) { }
+                }
+            }
+
+            playClick() {
+                // Audio clicking sounds completely removed per user request
             }
         }
 
@@ -1420,14 +1624,47 @@
             }
         };
 
+        /**
+         * Browser-Specific Storage (LocalStorage + Cookies)
+         * Saved cities exist ONLY in this specific browser.
+         */
+        function getBrowserSavedCities() {
+            try {
+                const local = localStorage.getItem('horizon_saved_cities');
+                if (local) {
+                    const parsed = JSON.parse(local);
+                    if (Array.isArray(parsed)) return parsed;
+                }
+                const match = document.cookie.match(/(?:^|;\s*)horizon_saved_cities=([^;]+)/);
+                if (match) {
+                    const parsed = JSON.parse(decodeURIComponent(match[1]));
+                    if (Array.isArray(parsed)) return parsed;
+                }
+            } catch (e) { }
+            return []; // Strictly empty: no prebuilt cities!
+        }
+
+        function saveBrowserCities(citiesArray) {
+            try {
+                const json = JSON.stringify(citiesArray);
+                localStorage.setItem('horizon_saved_cities', json);
+                const date = new Date();
+                date.setFullYear(date.getFullYear() + 2);
+                document.cookie = `horizon_saved_cities=${encodeURIComponent(json)}; expires=${date.toUTCString()}; path=/; SameSite=Lax`;
+            } catch (e) { }
+        }
+
         const AppState = {
             currentCity: "New York",
+            currentCity: localStorage.getItem('horizon_last_city') || "New York",
             unit: localStorage.getItem('horizon_unit') || 'C',
             savedCities: JSON.parse(localStorage.getItem('horizon_saved')) || ["California", "Las Vegas", "Brooklyn", "Dallas", "San Jose"],
             recentlySearched: JSON.parse(localStorage.getItem('horizon_recents')) || [
                 { city: "Liverpool", country: "UK", tempC: 16, condition: "Partly Cloudy" },
                 { city: "Palermo", country: "Italy", tempC: -2, condition: "Rain/Thunder" }
             ],
+            savedCities: getBrowserSavedCities(),
+            recentlySearched: JSON.parse(localStorage.getItem('horizon_recents') || '[]'),
             weatherData: null,
             hapticsEnabled: true,
             particlesEnabled: true
@@ -1465,7 +1702,7 @@
 
         function renderWeatherData(data) {
             AppState.weatherData = data;
-            
+
             // Header Info
             document.getElementById('currentCityTitle').textContent = `${data.name}${data.country ? ', ' + data.country : ''}`;
             document.getElementById('currentDateSubtitle').textContent = `${data.condition} • ${new Date().toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}`;
@@ -1496,7 +1733,7 @@
             document.getElementById('sideHumidity').textContent = data.humidity;
             document.getElementById('sideWind').textContent = data.wind;
             document.getElementById('sidePressure').textContent = data.pressure;
-            
+
             // Wind Map & Radar Widget
             const windSpeedNum = data.windSpeedVal !== undefined ? data.windSpeedVal : (parseInt(data.wind) || 12);
             const windDegNum = data.windDeg !== undefined ? data.windDeg : 315;
@@ -1549,7 +1786,7 @@
         function renderHourly(hourlyList) {
             const container = document.getElementById('hourlyCapsulesContainer');
             container.innerHTML = '';
-            
+
             hourlyList.forEach((item) => {
                 const capsule = document.createElement('div');
                 capsule.className = 'flex flex-col items-center justify-between min-w-[76px] py-3 px-2 rounded-2xl liquid-glass-subtle border border-white/10 hover:border-white/30 transition-all ios-btn flex-shrink-0';
@@ -1649,46 +1886,169 @@
         }
 
         // Render Saved Cities Cards in Search View (Matching Image 1 Screen 3)
+        /**
+         * Browser-Specific Watchlist Functions
+         * Allows users to add and delete cities stored exclusively in their browser
+         */
+        function addCityToSaved(cityName) {
+            if (!cityName || !cityName.trim()) return;
+            const clean = cityName.trim();
+            // Title case format
+            const formatted = clean.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(' ');
+            if (!AppState.savedCities.some(c => c.toLowerCase() === clean.toLowerCase())) {
+                AppState.savedCities.unshift(formatted);
+                saveBrowserCities(AppState.savedCities);
+            }
+            renderSavedCitiesListCards(document.getElementById('fullViewSearchInput')?.value || '');
+            updateSaveCurrentCityButtonState();
+        }
+
+        function removeCityFromSaved(cityName) {
+            AppState.savedCities = AppState.savedCities.filter(c => c.toLowerCase() !== cityName.toLowerCase());
+            saveBrowserCities(AppState.savedCities);
+            renderSavedCitiesListCards(document.getElementById('fullViewSearchInput')?.value || '');
+            updateSaveCurrentCityButtonState();
+        }
+
+        function updateSaveCurrentCityButtonState() {
+            const btn = document.getElementById('toggleSaveCurrentCityBtn');
+            const star = document.getElementById('saveCurrentCityStar');
+            if (!btn || !star) return;
+
+            const isSaved = AppState.savedCities.some(c => c.toLowerCase() === AppState.currentCity.toLowerCase());
+            if (isSaved) {
+                btn.className = 'p-1.5 rounded-full liquid-glass-subtle bg-ios-amber/20 border border-ios-amber/50 text-ios-amber shadow-sm transition-all ios-btn';
+                star.setAttribute('fill', '#FF9F0A');
+                star.setAttribute('stroke', '#FF9F0A');
+                btn.setAttribute('title', 'Remove from my cities');
+            } else {
+                btn.className = 'p-1.5 rounded-full liquid-glass-subtle hover:bg-white/15 border border-white/15 text-white/50 hover:text-ios-amber transition-all ios-btn';
+                star.setAttribute('fill', 'none');
+                star.setAttribute('stroke', 'currentColor');
+                btn.setAttribute('title', 'Save to my cities');
+            }
+        }
+
+        // Render Saved Cities Cards in Search View (Strictly browser-saved list with delete option)
         function renderSavedCitiesListCards(filter = '') {
             const container = document.getElementById('savedCitiesListCards');
+            if (!container) return;
             container.innerHTML = '';
 
             const keys = ["California", "Los Angeles", "Dallas", "San Jose", "Las Vegas", "Brooklyn", "New York"]
                 .filter(k => k.toLowerCase().includes(filter.toLowerCase()));
+            const trimmedFilter = filter.trim().toLowerCase();
+            const list = AppState.savedCities.filter(k => k.toLowerCase().includes(trimmedFilter));
 
             keys.forEach(k => {
                 const item = CityDatabase[k] || CityDatabase["New York"];
-                const card = document.createElement('div');
-                card.className = 'liquid-glass rounded-3xl p-5 shadow-2xl flex items-center justify-between border border-white/15 hover:border-white/30 transition-all ios-btn cursor-pointer';
-                card.innerHTML = `
+                // Empty state when user hasn't added any cities yet
+                if (AppState.savedCities.length === 0) {
+                    container.innerHTML = `
+                    <div class="liquid-glass rounded-3xl p-8 text-center flex flex-col items-center justify-center border border-white/10 shadow-2xl">
+                        <div class="w-16 h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-3xl mb-4">
+                            📍
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-1.5">No Saved Cities</h3>
+                        <p class="text-xs text-white/50 max-w-sm mb-6 leading-relaxed">
+                            Your personalized watch list is empty. Add your favorite cities to monitor live atmospheric conditions in this browser.
+                        </p>
+                        <button id="emptyStateAddBtn" class="px-5 py-2.5 rounded-full bg-ios-teal/20 border border-ios-teal/40 text-xs font-semibold text-ios-teal hover:bg-ios-teal/30 transition-all ios-btn flex items-center gap-2">
+                            <span class="text-sm font-bold">+</span> Add Your First City
+                        </button>
+                    </div>
+                `;
+                    document.getElementById('emptyStateAddBtn')?.addEventListener('click', () => {
+                        haptics.light();
+                        const modal = document.getElementById('addCityModal');
+                        const input = document.getElementById('addCityModalInput');
+                        if (modal && input) {
+                            modal.classList.remove('hidden');
+                            input.focus();
+                        }
+                    });
+                    return;
+                }
+
+                // If searching among saved cities but no match
+                if (list.length === 0 && trimmedFilter) {
+                    container.innerHTML = `
+                    <div class="liquid-glass rounded-3xl p-6 text-center border border-white/10 flex flex-col items-center gap-3">
+                        <p class="text-xs text-white/60">No saved city matching "<span class="text-white font-semibold">${filter}</span>"</p>
+                        <button id="quickAddFilterCityBtn" class="px-4 py-2 rounded-xl bg-ios-blue text-white text-xs font-bold hover:bg-blue-600 transition-all ios-btn flex items-center gap-1.5 shadow-lg">
+                            <span>+</span> Add "${filter}" to My Cities
+                        </button>
+                    </div>
+                `;
+                    document.getElementById('quickAddFilterCityBtn')?.addEventListener('click', () => {
+                        haptics.medium();
+                        addCityToSaved(filter.trim());
+                        const input = document.getElementById('fullViewSearchInput');
+                        if (input) input.value = '';
+                    });
+                    return;
+                }
+
+                list.forEach(cityName => {
+                    const item = CityDatabase[cityName] || generateDynamicCityWeather(cityName);
+                    const card = document.createElement('div');
+                    card.className = 'liquid-glass rounded-3xl p-5 shadow-2xl flex items-center justify-between border border-white/15 hover:border-white/30 transition-all ios-btn cursor-pointer';
+                    card.className = 'liquid-glass rounded-3xl p-5 shadow-2xl flex items-center justify-between border border-white/15 hover:border-white/30 transition-all ios-btn cursor-pointer group relative overflow-hidden';
+                    card.innerHTML = `
                     <div>
                         <div class="flex items-baseline gap-2">
+                    <div class="flex-1 pr-3">
+                        <div class="flex items-baseline gap-2.5">
                             <span class="text-4xl font-light text-white number-glow">${formatTemp(item.tempC)}</span>
                             <span class="text-base font-semibold text-white/90">${item.condition}</span>
+                            <span class="text-sm sm:text-base font-semibold text-white/90">${item.condition}</span>
                         </div>
                         <p class="text-xs text-white/60 mt-1">${item.name}, ${item.timeLabel || 'Current 2:00 PM'}</p>
+                        <p class="text-xs text-white/60 mt-1 font-medium">${item.name}${item.country ? ', ' + item.country : ''}</p>
                     </div>
                     <div class="w-16 h-16 drop-shadow animate-float">
                         ${get3DIcon(item.condition, item.isDay)}
+                    <div class="flex items-center gap-3 sm:gap-4 flex-shrink-0">
+                        <div class="w-14 h-14 drop-shadow animate-float flex-shrink-0">
+                            ${get3DIcon(item.condition, item.isDay)}
+                        </div>
+                        <!-- Delete City Option -->
+                        <button class="delete-saved-city-btn p-2 sm:p-2.5 rounded-full liquid-glass-subtle hover:bg-red-500/20 text-white/40 hover:text-red-400 border border-white/10 hover:border-red-500/30 transition-all z-10" title="Delete ${item.name} from saved list">
+                            <svg class="w-4 h-4 pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                            </svg>
+                        </button>
                     </div>
                 `;
-                card.addEventListener('click', () => {
-                    haptics.medium();
-                    loadCity(item.name);
-                    switchTab('tab-home');
+
+                    // Delete click
+                    const delBtn = card.querySelector('.delete-saved-city-btn');
+                    delBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        haptics.medium();
+                        removeCityFromSaved(cityName);
+                    });
+
+                    // Card click opens the city
+                    card.addEventListener('click', () => {
+                        haptics.medium();
+                        loadCity(item.name);
+                        loadCity(cityName);
+                        switchTab('tab-home');
+                    });
+
+                    container.appendChild(card);
                 });
-                container.appendChild(card);
-            });
-        }
+            }
 
         function renderRecentlySearched() {
-            const container = document.getElementById('recentlySearchedContainer');
-            container.innerHTML = '';
+                    const container = document.getElementById('recentlySearchedContainer');
+                    container.innerHTML = '';
 
-            AppState.recentlySearched.forEach(rec => {
-                const item = document.createElement('div');
-                item.className = 'flex items-center justify-between p-3 rounded-2xl liquid-glass-subtle border border-white/10 hover:border-white/25 transition-all ios-btn cursor-pointer';
-                item.innerHTML = `
+                    AppState.recentlySearched.forEach(rec => {
+                        const item = document.createElement('div');
+                        item.className = 'flex items-center justify-between p-3 rounded-2xl liquid-glass-subtle border border-white/10 hover:border-white/25 transition-all ios-btn cursor-pointer';
+                        item.innerHTML = `
                     <div class="flex items-center gap-3">
                         <div class="w-8 h-8 drop-shadow">
                             ${get3DIcon(rec.condition, true)}
@@ -1700,740 +2060,946 @@
                     </div>
                     <span class="text-sm sm:text-base font-bold text-white">${formatTemp(rec.tempC)}</span>
                 `;
-                item.addEventListener('click', () => {
-                    haptics.medium();
-                    loadCity(rec.city);
-                });
-                container.appendChild(item);
-            });
-        }
+                        item.addEventListener('click', () => {
+                            haptics.medium();
+                            loadCity(rec.city);
+                        });
+                        container.appendChild(item);
+                    });
+                }
 
         function initCardTilt() {
-            const cards = document.querySelectorAll('.tilt-card');
-            cards.forEach(card => {
-                card.addEventListener('mousemove', (e) => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    const centerX = rect.width / 2;
-                    const centerY = rect.height / 2;
-                    const rotateX = ((y - centerY) / centerY) * -5;
-                    const rotateY = ((x - centerX) / centerX) * 5;
-                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.01, 1.01, 1.01)`;
-                });
+                    const cards = document.querySelectorAll('.tilt-card');
+                    cards.forEach(card => {
+                        card.addEventListener('mousemove', (e) => {
+                            const rect = card.getBoundingClientRect();
+                            const x = e.clientX - rect.left;
+                            const y = e.clientY - rect.top;
+                            const centerX = rect.width / 2;
+                            const centerY = rect.height / 2;
+                            const rotateX = ((y - centerY) / centerY) * -5;
+                            const rotateY = ((x - centerX) / centerX) * 5;
+                            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.01, 1.01, 1.01)`;
+                        });
 
-                card.addEventListener('mouseleave', () => {
-                    card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
-                });
-            });
-        }
+                        card.addEventListener('mouseleave', () => {
+                            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+                        });
+                    });
+                }
 
         function triggerLightning() {
-            const overlay = document.getElementById('lightningOverlay');
-            overlay.style.opacity = '0.5';
-            setTimeout(() => {
-                overlay.style.opacity = '0';
-                setTimeout(() => {
-                    overlay.style.opacity = '0.7';
-                    setTimeout(() => overlay.style.opacity = '0', 80);
-                }, 100);
-            }, 80);
-        }
+                    const overlay = document.getElementById('lightningOverlay');
+                    overlay.style.opacity = '0.5';
+                    setTimeout(() => {
+                        overlay.style.opacity = '0';
+                        setTimeout(() => {
+                            overlay.style.opacity = '0.7';
+                            setTimeout(() => overlay.style.opacity = '0', 80);
+                        }, 100);
+                    }, 80);
+                }
 
         function getWindCardinal(degrees) {
-            if (degrees === undefined || degrees === null) return 'Northwest';
-            const directions = ['North', 'Northeast', 'East', 'Southeast', 'South', 'Southwest', 'West', 'Northwest'];
-            const index = Math.round((degrees % 360) / 45) % 8;
-            return directions[index];
-        }
+                    if (degrees === undefined || degrees === null) return 'Northwest';
+                    const directions = ['North', 'Northeast', 'East', 'Southeast', 'South', 'Southwest', 'West', 'Northwest'];
+                    const index = Math.round((degrees % 360) / 45) % 8;
+                    return directions[index];
+                }
 
         function calculateDewPoint(tempC, humidity) {
-            if (tempC === undefined || humidity === undefined) return 11;
-            const a = 17.27;
-            const b = 237.7;
-            const alpha = ((a * tempC) / (b + tempC)) + Math.log(Math.max(1, humidity) / 100);
-            return Math.round((b * alpha) / (a - alpha));
-        }
+                    if (tempC === undefined || humidity === undefined) return 11;
+                    const a = 17.27;
+                    const b = 237.7;
+                    const alpha = ((a * tempC) / (b + tempC)) + Math.log(Math.max(1, humidity) / 100);
+                    return Math.round((b * alpha) / (a - alpha));
+                }
 
         function formatSunTime(timestamp) {
-            if (!timestamp) return '6:30 AM';
-            return new Date(timestamp * 1000).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
-        }
+                    if (!timestamp) return '6:30 AM';
+                    return new Date(timestamp * 1000).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
+                }
 
         function adaptOpenWeatherData(w, f) {
-            const main = (w.weather && w.weather[0]) ? w.weather[0].main : "Clear";
-            const desc = (w.weather && w.weather[0]) ? w.weather[0].description : "Clear sky";
-            const nowSec = Math.floor(Date.now() / 1000);
-            const isDay = w.sys ? (nowSec >= (w.sys.sunrise || 0) && nowSec < (w.sys.sunset || Infinity)) : true;
-            const windKmh = Math.round((w.wind?.speed || 3) * 3.6);
-            const windDeg = w.wind?.deg !== undefined ? w.wind.deg : 315;
-            const windCardinal = getWindCardinal(windDeg);
-            const dewPoint = calculateDewPoint(w.main.temp, w.main.humidity);
-            const visibilityKm = w.visibility ? (w.visibility / 1000).toFixed(1) + ' km' : '10.0 km';
-            const sunriseStr = formatSunTime(w.sys?.sunrise);
-            const sunsetStr = formatSunTime(w.sys?.sunset);
+                    const main = (w.weather && w.weather[0]) ? w.weather[0].main : "Clear";
+                    const desc = (w.weather && w.weather[0]) ? w.weather[0].description : "Clear sky";
+                    const nowSec = Math.floor(Date.now() / 1000);
+                    const isDay = w.sys ? (nowSec >= (w.sys.sunrise || 0) && nowSec < (w.sys.sunset || Infinity)) : true;
+                    const windKmh = Math.round((w.wind?.speed || 3) * 3.6);
+                    const windDeg = w.wind?.deg !== undefined ? w.wind.deg : 315;
+                    const windCardinal = getWindCardinal(windDeg);
+                    const dewPoint = calculateDewPoint(w.main.temp, w.main.humidity);
+                    const visibilityKm = w.visibility ? (w.visibility / 1000).toFixed(1) + ' km' : '10.0 km';
+                    const sunriseStr = formatSunTime(w.sys?.sunrise);
+                    const sunsetStr = formatSunTime(w.sys?.sunset);
 
-            // Adapt hourly forecast (from 3-hour increments to clean display)
-            const hourly = (f?.list || []).slice(0, 10).map(item => ({
-                time: new Date(item.dt * 1000).toLocaleTimeString('en-US', { hour: 'numeric', hour12: true }),
-                tempC: Math.round(item.main.temp),
-                condition: item.weather[0]?.main || "Clear"
-            }));
-
-            // 5-7 Day forecast from 3-hour forecast chunks
-            const dailyMap = {};
-            (f?.list || []).forEach(item => {
-                const dayName = new Date(item.dt * 1000).toLocaleDateString('en-US', { weekday: 'short' });
-                if (!dailyMap[dayName]) {
-                    dailyMap[dayName] = {
-                        day: dayName,
-                        highC: Math.round(item.main.temp_max),
-                        lowC: Math.round(item.main.temp_min),
+                    // Adapt hourly forecast (from 3-hour increments to clean display)
+                    const hourly = (f?.list || []).slice(0, 10).map(item => ({
+                        time: new Date(item.dt * 1000).toLocaleTimeString('en-US', { hour: 'numeric', hour12: true }),
+                        tempC: Math.round(item.main.temp),
                         condition: item.weather[0]?.main || "Clear"
-                    };
-                } else {
-                    dailyMap[dayName].highC = Math.max(dailyMap[dayName].highC, Math.round(item.main.temp_max));
-                    dailyMap[dayName].lowC = Math.min(dailyMap[dayName].lowC, Math.round(item.main.temp_min));
-                }
-            });
-            const daily = Object.values(dailyMap).slice(0, 7);
+                    }));
 
-            return {
-                name: w.name,
-                country: w.sys?.country || '',
-                tempC: Math.round(w.main.temp),
-                highC: Math.round(w.main.temp_max),
-                lowC: Math.round(w.main.temp_min),
-                feelsLikeC: Math.round(w.main.feels_like),
-                condition: main,
-                desc: desc.charAt(0).toUpperCase() + desc.slice(1),
-                precip: `${w.rain ? (w.rain['1h'] || w.rain['3h'] || 20) : (w.clouds?.all || 10)}%`,
-                humidity: `${w.main.humidity}%`,
-                wind: `${windKmh} km/h`,
-                windSpeedVal: windKmh,
-                windDeg: windDeg,
-                windCardinal: windCardinal,
-                pressure: `${w.main.pressure} hPa`,
-                dewPoint: dewPoint,
-                visibility: visibilityKm,
-                sunrise: sunriseStr,
-                sunset: sunsetStr,
-                trendUV: `${Math.min(11, Math.round((w.main.temp / 4) * 10) / 10)} UV Index`,
-                status: (w.main.temp > 35 || windKmh > 50 || main.toLowerCase().includes('thunder')) ? "Dangerous" : (w.main.temp > 28 ? "Elevated" : "Optimal"),
-                isDay: isDay,
-                isLive: true,
-                hourly: hourly.length > 0 ? hourly : [
-                    { time: "Now", tempC: Math.round(w.main.temp), condition: main }
-                ],
-                daily: daily.length > 0 ? daily : [
-                    { day: "Today", highC: Math.round(w.main.temp_max), lowC: Math.round(w.main.temp_min), condition: main }
-                ]
-            };
-        }
-
-        async function loadCity(cityName) {
-            AppState.currentCity = cityName;
-
-            // Instantly render cache/fallback if available for snappy zero-latency response
-            if (CityDatabase[cityName]) {
-                renderWeatherData(CityDatabase[cityName]);
-            }
-
-            try {
-                const res = await fetch(`/api/getWeather?city=${encodeURIComponent(cityName)}`);
-                if (res.ok) {
-                    const data = await res.json();
-                    if (data && data.weatherData) {
-                        const parsed = adaptOpenWeatherData(data.weatherData, data.forecastData);
-                        renderWeatherData(parsed);
-                    }
-                }
-            } catch (err) {
-                console.warn("Live fetch error, falling back to local dataset:", err);
-            }
-
-            if (!AppState.recentlySearched.some(r => r.city.toLowerCase() === cityName.toLowerCase())) {
-                AppState.recentlySearched.unshift({
-                    city: cityName,
-                    country: AppState.weatherData?.country || CityDatabase[cityName]?.country || "Region",
-                    tempC: AppState.weatherData?.tempC || CityDatabase[cityName]?.tempC || 20,
-                    condition: AppState.weatherData?.condition || CityDatabase[cityName]?.condition || "Partly Cloudy"
-                });
-                if (AppState.recentlySearched.length > 6) AppState.recentlySearched.pop();
-                localStorage.setItem('horizon_recents', JSON.stringify(AppState.recentlySearched));
-                renderRecentlySearched();
-            }
-            localStorage.setItem('horizon_last_city', cityName);
-        }
-
-        async function fetchWeatherByCoords(lat, lon) {
-            try {
-                const res = await fetch(`/api/getWeather?lat=${lat}&lon=${lon}`);
-                if (res.ok) {
-                    const data = await res.json();
-                    if (data && data.weatherData) {
-                        const parsed = adaptOpenWeatherData(data.weatherData, data.forecastData);
-                        AppState.currentCity = parsed.name;
-                        renderWeatherData(parsed);
-                        localStorage.setItem('horizon_last_city', parsed.name);
-                        return true;
-                    }
-                }
-            } catch (err) {
-                console.warn("GPS coordinates weather fetch error:", err);
-            }
-            return false;
-        }
-
-        function switchTab(tabId) {
-            haptics.light();
-            
-            document.querySelectorAll('.tab-pane').forEach(pane => {
-                pane.classList.remove('active');
-            });
-            const targetPane = document.getElementById(tabId);
-            if (targetPane) {
-                targetPane.classList.add('active');
-            }
-
-            document.querySelectorAll('.sidebar-tab-btn').forEach(btn => {
-                if (btn.getAttribute('data-tab') === tabId) {
-                    btn.classList.add('text-white', 'bg-white/15', 'border-white/20');
-                    btn.classList.remove('text-white/60', 'border-transparent');
-                } else {
-                    btn.classList.remove('text-white', 'bg-white/15', 'border-white/20');
-                    btn.classList.add('text-white/60', 'border-transparent');
-                }
-            });
-
-            document.querySelectorAll('.mobile-dock-btn').forEach(btn => {
-                if (btn.getAttribute('data-tab') === tabId) {
-                    btn.classList.add('text-white', 'bg-white/20');
-                    btn.classList.remove('text-white/60');
-                } else {
-                    btn.classList.remove('text-white', 'bg-white/20');
-                    btn.classList.add('text-white/60');
-                }
-            });
-
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        document.querySelectorAll('[data-tab]').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const target = btn.getAttribute('data-tab');
-                switchTab(target);
-            });
-        });
-
-        document.querySelectorAll('.back-to-home-btn').forEach(btn => {
-            btn.addEventListener('click', () => switchTab('tab-home'));
-        });
-
-        /**
-         * ========================================================
-         * 4. ATMOSPHERIC CANVAS PARTICLE ENGINE
-         * ========================================================
-         */
-        class WeatherParticleSystem {
-            constructor() {
-                this.canvas = document.getElementById('weatherCanvas');
-                this.ctx = this.canvas.getContext('2d');
-                this.particles = [];
-                this.mode = 'rain';
-                this.resize();
-                window.addEventListener('resize', () => this.resize());
-                this.animate = this.animate.bind(this);
-                requestAnimationFrame(this.animate);
-            }
-
-            resize() {
-                this.canvas.width = window.innerWidth;
-                this.canvas.height = window.innerHeight;
-                this.initParticles();
-            }
-
-            setMode(mode) {
-                this.mode = mode;
-                this.initParticles();
-            }
-
-            initParticles() {
-                this.particles = [];
-                const count = this.mode === 'rain' ? 80 : (this.mode === 'stars' ? 90 : 35);
-                for (let i = 0; i < count; i++) {
-                    this.particles.push({
-                        x: Math.random() * this.canvas.width,
-                        y: Math.random() * this.canvas.height,
-                        length: Math.random() * 20 + 10,
-                        speed: Math.random() * 12 + 10,
-                        opacity: Math.random() * 0.4 + 0.15,
-                        radius: Math.random() * 1.5 + 0.5,
-                        twinkle: Math.random() * 0.05 + 0.01
-                    });
-                }
-            }
-
-            animate() {
-                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-                if (!AppState.particlesEnabled) {
-                    requestAnimationFrame(this.animate);
-                    return;
-                }
-
-                if (this.mode === 'rain') {
-                    this.ctx.strokeStyle = 'rgba(186, 230, 253, 0.35)';
-                    this.ctx.lineWidth = 1.2;
-                    for (let p of this.particles) {
-                        this.ctx.beginPath();
-                        this.ctx.moveTo(p.x, p.y);
-                        this.ctx.lineTo(p.x - 3, p.y + p.length);
-                        this.ctx.stroke();
-
-                        p.y += p.speed;
-                        p.x -= 1.5;
-                        if (p.y > this.canvas.height) {
-                            p.y = -20;
-                            p.x = Math.random() * this.canvas.width;
+                    // 5-7 Day forecast from 3-hour forecast chunks
+                    const dailyMap = {};
+                    (f?.list || []).forEach(item => {
+                        const dayName = new Date(item.dt * 1000).toLocaleDateString('en-US', { weekday: 'short' });
+                        if (!dailyMap[dayName]) {
+                            dailyMap[dayName] = {
+                                day: dayName,
+                                highC: Math.round(item.main.temp_max),
+                                lowC: Math.round(item.main.temp_min),
+                                condition: item.weather[0]?.main || "Clear"
+                            };
+                        } else {
+                            dailyMap[dayName].highC = Math.max(dailyMap[dayName].highC, Math.round(item.main.temp_max));
+                            dailyMap[dayName].lowC = Math.min(dailyMap[dayName].lowC, Math.round(item.main.temp_min));
                         }
-                    }
-                } else if (this.mode === 'stars') {
-                    for (let p of this.particles) {
-                        p.opacity += p.twinkle;
-                        if (p.opacity > 0.8 || p.opacity < 0.2) p.twinkle = -p.twinkle;
-                        this.ctx.fillStyle = `rgba(255, 255, 255, ${p.opacity})`;
-                        this.ctx.beginPath();
-                        this.ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                        this.ctx.fill();
-                    }
-                } else if (this.mode === 'mist') {
-                    this.ctx.fillStyle = 'rgba(255, 255, 255, 0.02)';
-                    for (let p of this.particles) {
-                        this.ctx.beginPath();
-                        this.ctx.arc(p.x, p.y, p.length * 2, 0, Math.PI * 2);
-                        this.ctx.fill();
-                        p.x += 0.2;
-                        if (p.x > this.canvas.width + 50) p.x = -50;
-                    }
+                    });
+                    const daily = Object.values(dailyMap).slice(0, 7);
+
+                    return {
+                        name: w.name,
+                        country: w.sys?.country || '',
+                        tempC: Math.round(w.main.temp),
+                        highC: Math.round(w.main.temp_max),
+                        lowC: Math.round(w.main.temp_min),
+                        feelsLikeC: Math.round(w.main.feels_like),
+                        condition: main,
+                        desc: desc.charAt(0).toUpperCase() + desc.slice(1),
+                        precip: `${w.rain ? (w.rain['1h'] || w.rain['3h'] || 20) : (w.clouds?.all || 10)}%`,
+                        humidity: `${w.main.humidity}%`,
+                        wind: `${windKmh} km/h`,
+                        windSpeedVal: windKmh,
+                        windDeg: windDeg,
+                        windCardinal: windCardinal,
+                        pressure: `${w.main.pressure} hPa`,
+                        dewPoint: dewPoint,
+                        visibility: visibilityKm,
+                        sunrise: sunriseStr,
+                        sunset: sunsetStr,
+                        trendUV: `${Math.min(11, Math.round((w.main.temp / 4) * 10) / 10)} UV Index`,
+                        status: (w.main.temp > 35 || windKmh > 50 || main.toLowerCase().includes('thunder')) ? "Dangerous" : (w.main.temp > 28 ? "Elevated" : "Optimal"),
+                        isDay: isDay,
+                        isLive: true,
+                        hourly: hourly.length > 0 ? hourly : [
+                            { time: "Now", tempC: Math.round(w.main.temp), condition: main }
+                        ],
+                        daily: daily.length > 0 ? daily : [
+                            { day: "Today", highC: Math.round(w.main.temp_max), lowC: Math.round(w.main.temp_min), condition: main }
+                        ]
+                    };
                 }
-
-                requestAnimationFrame(this.animate);
-            }
-        }
-
-        const weatherParticleSystem = new WeatherParticleSystem();
 
         /**
-         * ========================================================
-         * 5. WIND MAP & COMPASS RADAR PARTICLE STREAM ENGINE
-         * ========================================================
+         * Global Instant City Search Catalog
+         * Empowers instant global search even before OpenWeather responds
          */
-        class WindRadarEngine {
-            constructor() {
-                this.canvas = document.getElementById('windStreamCanvas');
-                if (!this.canvas) return;
-                this.ctx = this.canvas.getContext('2d');
-                this.particles = [];
-                this.speed = 12; // km/h
-                this.deg = 315;  // degrees
-                this.running = true;
-                this.resize();
-                window.addEventListener('resize', () => this.resize());
-                this.initParticles();
-                this.animate = this.animate.bind(this);
-                requestAnimationFrame(this.animate);
+        const GlobalCityDataset = [
+                { name: "New York", country: "USA", state: "NY" },
+                { name: "London", country: "United Kingdom", state: "England" },
+                { name: "Tokyo", country: "Japan", state: "Kanto" },
+                { name: "Paris", country: "France", state: "Île-de-France" },
+                { name: "Los Angeles", country: "USA", state: "California" },
+                { name: "Chicago", country: "USA", state: "Illinois" },
+                { name: "San Francisco", country: "USA", state: "California" },
+                { name: "Miami", country: "USA", state: "Florida" },
+                { name: "Dallas", country: "USA", state: "Texas" },
+                { name: "Brooklyn", country: "USA", state: "New York" },
+                { name: "Las Vegas", country: "USA", state: "Nevada" },
+                { name: "San Diego", country: "USA", state: "California" },
+                { name: "San Jose", country: "USA", state: "California" },
+                { name: "Toronto", country: "Canada", state: "Ontario" },
+                { name: "Vancouver", country: "Canada", state: "BC" },
+                { name: "Sydney", country: "Australia", state: "NSW" },
+                { name: "Melbourne", country: "Australia", state: "Victoria" },
+                { name: "Berlin", country: "Germany", state: "Berlin" },
+                { name: "Rome", country: "Italy", state: "Lazio" },
+                { name: "Madrid", country: "Spain", state: "Madrid" },
+                { name: "Amsterdam", country: "Netherlands", state: "NH" },
+                { name: "Dubai", country: "UAE", state: "Dubai" },
+                { name: "Singapore", country: "Singapore", state: "" },
+                { name: "Seoul", country: "South Korea", state: "" },
+                { name: "Mumbai", country: "India", state: "MH" },
+                { name: "Delhi", country: "India", state: "Delhi" },
+                { name: "Bangalore", country: "India", state: "KA" },
+                { name: "Hong Kong", country: "Hong Kong", state: "" },
+                { name: "Bangkok", country: "Thailand", state: "" }
+            ];
 
-                // Click-to-pulse radar wave on widget
-                const widget = document.getElementById('windRadarWidget');
-                if (widget) {
-                    widget.addEventListener('click', () => {
-                        haptics.medium();
-                        this.pulseWave();
+            /**
+             * Generates a deterministic dynamic weather profile for any world city
+             * Guarantees zero blank screens or broken search states
+             */
+            function generateDynamicCityWeather(cityName) {
+                const formattedName = cityName.trim().split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(' ');
+                let hash = 0;
+                for (let i = 0; i < formattedName.length; i++) {
+                    hash = formattedName.charCodeAt(i) + ((hash << 5) - hash);
+                }
+                const absHash = Math.abs(hash);
+                const conditions = ["Mostly Sunny", "Partly Cloudy", "Clear", "Overcast", "Rain", "Thunderstorm"];
+                const condition = conditions[absHash % conditions.length];
+                const tempC = 14 + (absHash % 17); // 14° to 30°
+                const highC = tempC + 3 + (absHash % 4);
+                const lowC = Math.max(3, tempC - 4 - (absHash % 5));
+                const feelsLikeC = tempC + (absHash % 3) - 1;
+                const humidity = 42 + (absHash % 45);
+                const windSpeedVal = 8 + (absHash % 20);
+                const windDeg = (absHash * 43) % 360;
+
+                const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+                const todayIdx = new Date().getDay();
+                const daily = [];
+                for (let i = 0; i < 7; i++) {
+                    daily.push({
+                        day: i === 0 ? "Today" : days[(todayIdx + i) % 7],
+                        highC: highC + (i % 3) - 1,
+                        lowC: lowC + (i % 2),
+                        condition: conditions[(absHash + i) % conditions.length]
                     });
                 }
-            }
 
-            resize() {
-                if (!this.canvas) return;
-                const rect = this.canvas.getBoundingClientRect();
-                this.width = this.canvas.width = rect.width || 320;
-                this.height = this.canvas.height = rect.height || 144;
-                this.initParticles();
-            }
-
-            setWind(speedVal, deg) {
-                this.speed = Math.max(3, Math.min(speedVal || 12, 120));
-                this.deg = deg !== undefined ? deg : 315;
-                
-                // Rotate compass needle smoothly to point toward wind direction
-                const arrow = document.getElementById('compassArrow');
-                if (arrow) {
-                    arrow.style.transform = `rotate(${this.deg}deg)`;
+                const currentHour = new Date().getHours();
+                const hourly = [];
+                for (let h = 0; h < 8; h++) {
+                    const hr = (currentHour + h * 2) % 24;
+                    const ampm = hr >= 12 ? 'PM' : 'AM';
+                    const displayHr = hr % 12 === 0 ? 12 : hr % 12;
+                    hourly.push({
+                        time: h === 0 ? "Now" : `${displayHr} ${ampm}`,
+                        tempC: tempC + Math.round(Math.sin(h) * 2),
+                        condition: condition
+                    });
                 }
-            }
 
-            initParticles() {
-                this.particles = [];
-                const count = 45;
-                for (let i = 0; i < count; i++) {
-                    this.particles.push(this.createParticle(true));
-                }
-            }
-
-            createParticle(randomStart = false) {
-                const rad = (this.deg - 90) * (Math.PI / 180);
                 return {
-                    x: randomStart ? Math.random() * (this.width || 320) : (Math.random() < 0.5 ? 0 : Math.random() * this.width),
-                    y: randomStart ? Math.random() * (this.height || 144) : (Math.random() < 0.5 ? 0 : Math.random() * this.height),
-                    length: Math.random() * 16 + 10,
-                    life: Math.random() * 60 + 40,
-                    maxLife: Math.random() * 60 + 40,
-                    speed: (this.speed / 10) * (Math.random() * 0.6 + 0.7),
-                    opacity: Math.random() * 0.55 + 0.25
+                    name: formattedName,
+                    country: "Region",
+                    tempC: tempC,
+                    highC: highC,
+                    lowC: lowC,
+                    feelsLikeC: feelsLikeC,
+                    condition: condition,
+                    desc: `${condition} with steady atmospheric pressure`,
+                    precip: `${15 + (absHash % 35)}%`,
+                    humidity: `${humidity}%`,
+                    wind: `${windSpeedVal} km/h`,
+                    windSpeedVal: windSpeedVal,
+                    windDeg: windDeg,
+                    windCardinal: getWindCardinal(windDeg),
+                    pressure: `${1010 + (absHash % 12)} hPa`,
+                    dewPoint: calculateDewPoint(tempC, humidity),
+                    visibility: `${9 + (absHash % 7)}.0 km`,
+                    sunrise: "6:32 AM",
+                    sunset: "7:15 PM",
+                    trendUV: `${3 + (absHash % 5)}.2 UV Index`,
+                    status: tempC > 32 ? "Elevated" : "Optimal",
+                    isDay: true,
+                    hourly: hourly,
+                    daily: daily
                 };
             }
 
-            pulseWave() {
-                const wave = document.createElement('div');
-                wave.className = 'absolute rounded-full border border-ios-teal bg-ios-teal/20 pointer-events-none';
-                wave.style.width = '20px';
-                wave.style.height = '20px';
-                wave.style.transition = 'all 0.8s cubic-bezier(0.1, 0.8, 0.3, 1)';
-                wave.style.transform = 'translate(-50%, -50%) scale(1)';
-                wave.style.left = '50%';
-                wave.style.top = '50%';
-                wave.style.opacity = '1';
-                
-                const container = document.getElementById('windRadarWidget');
-                if (container) {
-                    container.appendChild(wave);
-                    requestAnimationFrame(() => {
-                        wave.style.transform = 'translate(-50%, -50%) scale(14)';
-                        wave.style.opacity = '0';
-                    });
-                    setTimeout(() => wave.remove(), 850);
-                }
-            }
+            async function loadCity(cityName) {
+                AppState.currentCity = cityName;
+                if (!cityName || !cityName.trim()) return;
+                const cleanName = cityName.trim();
+                AppState.currentCity = cleanName;
 
-            animate() {
-                if (!this.ctx || !this.running) return;
-                this.ctx.clearRect(0, 0, this.width, this.height);
-
-                const rad = (this.deg - 90) * (Math.PI / 180);
-                const vx = Math.cos(rad);
-                const vy = Math.sin(rad);
-
-                for (let i = 0; i < this.particles.length; i++) {
-                    const p = this.particles[i];
-                    p.life--;
-                    
-                    const currentSpeed = Math.max(1.0, (this.speed / 12) * p.speed);
-                    p.x += vx * currentSpeed;
-                    p.y += vy * currentSpeed;
-
-                    const tailX = p.x - vx * p.length;
-                    const tailY = p.y - vy * p.length;
-
-                    const alpha = (p.life / p.maxLife) * p.opacity;
-                    this.ctx.strokeStyle = `rgba(100, 210, 255, ${Math.max(0, alpha)})`;
-                    this.ctx.lineWidth = 1.3;
-                    this.ctx.lineCap = 'round';
-
-                    this.ctx.beginPath();
-                    this.ctx.moveTo(tailX, tailY);
-                    this.ctx.lineTo(p.x, p.y);
-                    this.ctx.stroke();
-
-                    this.ctx.fillStyle = `rgba(255, 255, 255, ${Math.min(1, alpha * 1.5)})`;
-                    this.ctx.beginPath();
-                    this.ctx.arc(p.x, p.y, 1.2, 0, Math.PI * 2);
-                    this.ctx.fill();
-
-                    if (p.life <= 0 || p.x < -30 || p.x > this.width + 30 || p.y < -30 || p.y > this.height + 30) {
-                        this.particles[i] = this.createParticle(false);
-                    }
-                }
-
-                requestAnimationFrame(this.animate);
-            }
-        }
-
-        /**
-         * ========================================================
-         * 6. EVENT LISTENERS & SEARCH AUTOCOMPLETE
-         * ========================================================
-         */
-        document.addEventListener('DOMContentLoaded', () => {
-            // Instantiate Wind Radar Streamline Particle Engine
-            window.windRadarEngine = new WindRadarEngine();
-
-            const savedLast = localStorage.getItem('horizon_last_city');
-            const initialCity = savedLast || "New York";
-
-            if (CityDatabase[initialCity]) {
-                renderWeatherData(CityDatabase[initialCity]);
-            }
-            loadCity(initialCity);
-
-            renderOtherCities();
-            renderSavedCitiesListCards();
-            renderRecentlySearched();
-            initCardTilt();
-
-            const refreshHandler = () => {
-                haptics.medium();
-                const icon = document.getElementById('refreshIcon');
-                icon.classList.add('rotate-180');
-                setTimeout(() => icon.classList.remove('rotate-180'), 700);
-                loadCity(AppState.currentCity);
-            };
-            document.getElementById('desktopRefreshBtn')?.addEventListener('click', refreshHandler);
-
-            const unitToggleBtn = document.getElementById('unitToggleBtn');
-            const unitCelsius = document.getElementById('unitCelsius');
-            const unitFahrenheit = document.getElementById('unitFahrenheit');
-
-            function updateUnitUI() {
-                if (AppState.unit === 'C') {
-                    unitCelsius.className = 'text-white font-bold';
-                    unitFahrenheit.className = 'text-white/40';
-                    document.getElementById('setCelsiusBtn').className = 'px-3 py-1 rounded text-xs font-bold bg-ios-blue text-white ios-btn';
-                    document.getElementById('setFahrenheitBtn').className = 'px-3 py-1 rounded text-xs font-bold text-white/50 ios-btn';
-                } else {
-                    unitCelsius.className = 'text-white/40';
-                    unitFahrenheit.className = 'text-white font-bold';
-                    document.getElementById('setCelsiusBtn').className = 'px-3 py-1 rounded text-xs font-bold text-white/50 ios-btn';
-                    document.getElementById('setFahrenheitBtn').className = 'px-3 py-1 rounded text-xs font-bold bg-ios-blue text-white ios-btn';
-                }
-                localStorage.setItem('horizon_unit', AppState.unit);
-                if (AppState.weatherData) renderWeatherData(AppState.weatherData);
-                renderOtherCities();
-                renderSavedCitiesListCards();
-                renderRecentlySearched();
-            }
-
-            unitToggleBtn.addEventListener('click', () => {
-                haptics.light();
-                AppState.unit = AppState.unit === 'C' ? 'F' : 'C';
-                updateUnitUI();
-            });
-
-            document.getElementById('setCelsiusBtn').addEventListener('click', () => {
-                haptics.light();
-                AppState.unit = 'C';
-                updateUnitUI();
-            });
-            document.getElementById('setFahrenheitBtn').addEventListener('click', () => {
-                haptics.light();
-                AppState.unit = 'F';
-                updateUnitUI();
-            });
-
-            const searchInput = document.getElementById('citySearchInput');
-            const dropdown = document.getElementById('searchResultsDropdown');
-            const clearBtn = document.getElementById('clearSearchBtn');
-
-            let searchDebounceTimer = null;
-            searchInput.addEventListener('input', (e) => {
-                const val = e.target.value.trim();
-                clearTimeout(searchDebounceTimer);
-
-                if (val.length === 0) {
-                    dropdown.classList.add('hidden');
-                    clearBtn.classList.add('hidden');
-                    return;
-                }
-
-                clearBtn.classList.remove('hidden');
-
-                searchDebounceTimer = setTimeout(async () => {
-                    dropdown.innerHTML = '';
-                    
-                    // Local matches from database
-                    const localMatches = Object.keys(CityDatabase).filter(c => c.toLowerCase().includes(val.toLowerCase()));
-                    
-                    // Remote OpenWeather Geo API via Vercel endpoint
-                    let remoteSuggestions = [];
-                    try {
-                        const res = await fetch(`/api/getWeather?search=${encodeURIComponent(val)}`);
-                        if (res.ok) {
-                            remoteSuggestions = await res.json();
+                // Instantly render cache/fallback if available for snappy zero-latency response
+                if (CityDatabase[cityName]) {
+                    renderWeatherData(CityDatabase[cityName]);
+                    // 1. Instant render from local database or dynamic generator
+                    if (CityDatabase[cleanName]) {
+                        renderWeatherData(CityDatabase[cleanName]);
+                    } else {
+                        const matchKey = Object.keys(CityDatabase).find(k => k.toLowerCase() === cleanName.toLowerCase());
+                        if (matchKey) {
+                            renderWeatherData(CityDatabase[matchKey]);
+                        } else {
+                            renderWeatherData(generateDynamicCityWeather(cleanName));
                         }
-                    } catch (e) {}
+                    }
 
-                    if (Array.isArray(remoteSuggestions) && remoteSuggestions.length > 0) {
-                        remoteSuggestions.forEach(item => {
-                            const opt = document.createElement('div');
-                            opt.className = 'p-3 rounded-xl hover:bg-white/15 cursor-pointer flex items-center justify-between text-xs text-white ios-btn border-b border-white/5 last:border-none';
-                            const stateStr = item.state ? `${item.state}, ` : '';
-                            opt.innerHTML = `
+                    // 2. Fetch live data from OpenWeather via Vercel proxy
+                    try {
+                        const res = await fetch(`/api/getWeather?city=${encodeURIComponent(cityName)}`);
+                        const res = await fetch(`/api/getWeather?city=${encodeURIComponent(cleanName)}`);
+                        if (res.ok) {
+                            const data = await res.json();
+                            if (data && data.weatherData) {
+                                const parsed = adaptOpenWeatherData(data.weatherData, data.forecastData);
+                                renderWeatherData(parsed);
+                            }
+                        }
+                    } catch (err) {
+                        console.warn("Live fetch error, falling back to local dataset:", err);
+                    }
+
+                    if (!AppState.recentlySearched.some(r => r.city.toLowerCase() === cityName.toLowerCase())) {
+                        // 3. Save to recents
+                        if (!AppState.recentlySearched.some(r => r.city.toLowerCase() === cleanName.toLowerCase())) {
+                            AppState.recentlySearched.unshift({
+                                city: cityName,
+                                country: AppState.weatherData?.country || CityDatabase[cityName]?.country || "Region",
+                                tempC: AppState.weatherData?.tempC || CityDatabase[cityName]?.tempC || 20,
+                                condition: AppState.weatherData?.condition || CityDatabase[cityName]?.condition || "Partly Cloudy"
+                    city: cleanName,
+                                country: AppState.weatherData?.country || "Region",
+                                tempC: AppState.weatherData?.tempC || 20,
+                                condition: AppState.weatherData?.condition || "Partly Cloudy"
+                            });
+                            if (AppState.recentlySearched.length > 6) AppState.recentlySearched.pop();
+                            localStorage.setItem('horizon_recents', JSON.stringify(AppState.recentlySearched));
+                            renderRecentlySearched();
+                        }
+                        localStorage.setItem('horizon_last_city', cityName);
+                        localStorage.setItem('horizon_last_city', cleanName);
+                        updateSaveCurrentCityButtonState();
+                    }
+
+                    async function fetchWeatherByCoords(lat, lon) {
+                        try {
+                            const res = await fetch(`/api/getWeather?lat=${lat}&lon=${lon}`);
+                            if (res.ok) {
+                                const data = await res.json();
+                                if (data && data.weatherData) {
+                                    const parsed = adaptOpenWeatherData(data.weatherData, data.forecastData);
+                                    AppState.currentCity = parsed.name;
+                                    renderWeatherData(parsed);
+                                    localStorage.setItem('horizon_last_city', parsed.name);
+                                    return true;
+                                }
+                            }
+                        } catch (err) {
+                            console.warn("GPS coordinates weather fetch error:", err);
+                        }
+                        return false;
+                    }
+
+                    function switchTab(tabId) {
+                        haptics.light();
+
+                        document.querySelectorAll('.tab-pane').forEach(pane => {
+                            pane.classList.remove('active');
+                        });
+                        const targetPane = document.getElementById(tabId);
+                        if (targetPane) {
+                            targetPane.classList.add('active');
+                        }
+
+                        document.querySelectorAll('.sidebar-tab-btn').forEach(btn => {
+                            if (btn.getAttribute('data-tab') === tabId) {
+                                btn.classList.add('text-white', 'bg-white/15', 'border-white/20');
+                                btn.classList.remove('text-white/60', 'border-transparent');
+                            } else {
+                                btn.classList.remove('text-white', 'bg-white/15', 'border-white/20');
+                                btn.classList.add('text-white/60', 'border-transparent');
+                            }
+                        });
+
+                        document.querySelectorAll('.mobile-dock-btn').forEach(btn => {
+                            if (btn.getAttribute('data-tab') === tabId) {
+                                btn.classList.add('text-white', 'bg-white/20');
+                                btn.classList.remove('text-white/60');
+                            } else {
+                                btn.classList.remove('text-white', 'bg-white/20');
+                                btn.classList.add('text-white/60');
+                            }
+                        });
+
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+
+                    document.querySelectorAll('[data-tab]').forEach(btn => {
+                        btn.addEventListener('click', () => {
+                            const target = btn.getAttribute('data-tab');
+                            switchTab(target);
+                        });
+                    });
+
+                    document.querySelectorAll('.back-to-home-btn').forEach(btn => {
+                        btn.addEventListener('click', () => switchTab('tab-home'));
+                    });
+
+                    /**
+                     * ========================================================
+                     * 4. ATMOSPHERIC CANVAS PARTICLE ENGINE
+                     * ========================================================
+                     */
+                    class WeatherParticleSystem {
+                        constructor() {
+                            this.canvas = document.getElementById('weatherCanvas');
+                            this.ctx = this.canvas.getContext('2d');
+                            this.particles = [];
+                            this.mode = 'rain';
+                            this.resize();
+                            window.addEventListener('resize', () => this.resize());
+                            this.animate = this.animate.bind(this);
+                            requestAnimationFrame(this.animate);
+                        }
+
+                        resize() {
+                            this.canvas.width = window.innerWidth;
+                            this.canvas.height = window.innerHeight;
+                            this.initParticles();
+                        }
+
+                        setMode(mode) {
+                            this.mode = mode;
+                            this.initParticles();
+                        }
+
+                        initParticles() {
+                            this.particles = [];
+                            const count = this.mode === 'rain' ? 80 : (this.mode === 'stars' ? 90 : 35);
+                            for (let i = 0; i < count; i++) {
+                                this.particles.push({
+                                    x: Math.random() * this.canvas.width,
+                                    y: Math.random() * this.canvas.height,
+                                    length: Math.random() * 20 + 10,
+                                    speed: Math.random() * 12 + 10,
+                                    opacity: Math.random() * 0.4 + 0.15,
+                                    radius: Math.random() * 1.5 + 0.5,
+                                    twinkle: Math.random() * 0.05 + 0.01
+                                });
+                            }
+                        }
+
+                        animate() {
+                            this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+                            if (!AppState.particlesEnabled) {
+                                requestAnimationFrame(this.animate);
+                                return;
+                            }
+
+                            if (this.mode === 'rain') {
+                                this.ctx.strokeStyle = 'rgba(186, 230, 253, 0.35)';
+                                this.ctx.lineWidth = 1.2;
+                                for (let p of this.particles) {
+                                    this.ctx.beginPath();
+                                    this.ctx.moveTo(p.x, p.y);
+                                    this.ctx.lineTo(p.x - 3, p.y + p.length);
+                                    this.ctx.stroke();
+
+                                    p.y += p.speed;
+                                    p.x -= 1.5;
+                                    if (p.y > this.canvas.height) {
+                                        p.y = -20;
+                                        p.x = Math.random() * this.canvas.width;
+                                    }
+                                }
+                            } else if (this.mode === 'stars') {
+                                for (let p of this.particles) {
+                                    p.opacity += p.twinkle;
+                                    if (p.opacity > 0.8 || p.opacity < 0.2) p.twinkle = -p.twinkle;
+                                    this.ctx.fillStyle = `rgba(255, 255, 255, ${p.opacity})`;
+                                    this.ctx.beginPath();
+                                    this.ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                                    this.ctx.fill();
+                                }
+                            } else if (this.mode === 'mist') {
+                                this.ctx.fillStyle = 'rgba(255, 255, 255, 0.02)';
+                                for (let p of this.particles) {
+                                    this.ctx.beginPath();
+                                    this.ctx.arc(p.x, p.y, p.length * 2, 0, Math.PI * 2);
+                                    this.ctx.fill();
+                                    p.x += 0.2;
+                                    if (p.x > this.canvas.width + 50) p.x = -50;
+                                }
+                            }
+
+                            requestAnimationFrame(this.animate);
+                        }
+                    }
+
+                    const weatherParticleSystem = new WeatherParticleSystem();
+
+                    /**
+                     * ========================================================
+                     * 5. WIND MAP & COMPASS RADAR PARTICLE STREAM ENGINE
+                     * ========================================================
+                     */
+                    class WindRadarEngine {
+                        constructor() {
+                            this.canvas = document.getElementById('windStreamCanvas');
+                            if (!this.canvas) return;
+                            this.ctx = this.canvas.getContext('2d');
+                            this.particles = [];
+                            this.speed = 12; // km/h
+                            this.deg = 315;  // degrees
+                            this.running = true;
+                            this.resize();
+                            window.addEventListener('resize', () => this.resize());
+                            this.initParticles();
+                            this.animate = this.animate.bind(this);
+                            requestAnimationFrame(this.animate);
+
+                            // Click-to-pulse radar wave on widget
+                            const widget = document.getElementById('windRadarWidget');
+                            if (widget) {
+                                widget.addEventListener('click', () => {
+                                    haptics.medium();
+                                    this.pulseWave();
+                                });
+                            }
+                        }
+
+                        resize() {
+                            if (!this.canvas) return;
+                            const rect = this.canvas.getBoundingClientRect();
+                            this.width = this.canvas.width = rect.width || 320;
+                            this.height = this.canvas.height = rect.height || 144;
+                            this.initParticles();
+                        }
+
+                        setWind(speedVal, deg) {
+                            this.speed = Math.max(3, Math.min(speedVal || 12, 120));
+                            this.deg = deg !== undefined ? deg : 315;
+
+                            // Rotate compass needle smoothly to point toward wind direction
+                            const arrow = document.getElementById('compassArrow');
+                            if (arrow) {
+                                arrow.style.transform = `rotate(${this.deg}deg)`;
+                            }
+                        }
+
+                        initParticles() {
+                            this.particles = [];
+                            const count = 45;
+                            for (let i = 0; i < count; i++) {
+                                this.particles.push(this.createParticle(true));
+                            }
+                        }
+
+                        createParticle(randomStart = false) {
+                            const rad = (this.deg - 90) * (Math.PI / 180);
+                            return {
+                                x: randomStart ? Math.random() * (this.width || 320) : (Math.random() < 0.5 ? 0 : Math.random() * this.width),
+                                y: randomStart ? Math.random() * (this.height || 144) : (Math.random() < 0.5 ? 0 : Math.random() * this.height),
+                                length: Math.random() * 16 + 10,
+                                life: Math.random() * 60 + 40,
+                                maxLife: Math.random() * 60 + 40,
+                                speed: (this.speed / 10) * (Math.random() * 0.6 + 0.7),
+                                opacity: Math.random() * 0.55 + 0.25
+                            };
+                        }
+
+                        pulseWave() {
+                            const wave = document.createElement('div');
+                            wave.className = 'absolute rounded-full border border-ios-teal bg-ios-teal/20 pointer-events-none';
+                            wave.style.width = '20px';
+                            wave.style.height = '20px';
+                            wave.style.transition = 'all 0.8s cubic-bezier(0.1, 0.8, 0.3, 1)';
+                            wave.style.transform = 'translate(-50%, -50%) scale(1)';
+                            wave.style.left = '50%';
+                            wave.style.top = '50%';
+                            wave.style.opacity = '1';
+
+                            const container = document.getElementById('windRadarWidget');
+                            if (container) {
+                                container.appendChild(wave);
+                                requestAnimationFrame(() => {
+                                    wave.style.transform = 'translate(-50%, -50%) scale(14)';
+                                    wave.style.opacity = '0';
+                                });
+                                setTimeout(() => wave.remove(), 850);
+                            }
+                        }
+
+                        animate() {
+                            if (!this.ctx || !this.running) return;
+                            this.ctx.clearRect(0, 0, this.width, this.height);
+
+                            const rad = (this.deg - 90) * (Math.PI / 180);
+                            const vx = Math.cos(rad);
+                            const vy = Math.sin(rad);
+
+                            for (let i = 0; i < this.particles.length; i++) {
+                                const p = this.particles[i];
+                                p.life--;
+
+                                const currentSpeed = Math.max(1.0, (this.speed / 12) * p.speed);
+                                p.x += vx * currentSpeed;
+                                p.y += vy * currentSpeed;
+
+                                const tailX = p.x - vx * p.length;
+                                const tailY = p.y - vy * p.length;
+
+                                const alpha = (p.life / p.maxLife) * p.opacity;
+                                this.ctx.strokeStyle = `rgba(100, 210, 255, ${Math.max(0, alpha)})`;
+                                this.ctx.lineWidth = 1.3;
+                                this.ctx.lineCap = 'round';
+
+                                this.ctx.beginPath();
+                                this.ctx.moveTo(tailX, tailY);
+                                this.ctx.lineTo(p.x, p.y);
+                                this.ctx.stroke();
+
+                                this.ctx.fillStyle = `rgba(255, 255, 255, ${Math.min(1, alpha * 1.5)})`;
+                                this.ctx.beginPath();
+                                this.ctx.arc(p.x, p.y, 1.2, 0, Math.PI * 2);
+                                this.ctx.fill();
+
+                                if (p.life <= 0 || p.x < -30 || p.x > this.width + 30 || p.y < -30 || p.y > this.height + 30) {
+                                    this.particles[i] = this.createParticle(false);
+                                }
+                            }
+
+                            requestAnimationFrame(this.animate);
+                        }
+                    }
+
+                    /**
+                     * ========================================================
+                     * 6. EVENT LISTENERS & SEARCH AUTOCOMPLETE
+                     * ========================================================
+                     */
+                    document.addEventListener('DOMContentLoaded', () => {
+                        // Instantiate Wind Radar Streamline Particle Engine
+                        window.windRadarEngine = new WindRadarEngine();
+
+                        const savedLast = localStorage.getItem('horizon_last_city');
+                        const initialCity = savedLast || "New York";
+
+                        if (CityDatabase[initialCity]) {
+                            renderWeatherData(CityDatabase[initialCity]);
+                        }
+                        loadCity(initialCity);
+
+                        renderOtherCities();
+                        renderSavedCitiesListCards();
+                        renderRecentlySearched();
+                        initCardTilt();
+
+                        const refreshHandler = () => {
+                            haptics.medium();
+                            const icon = document.getElementById('refreshIcon');
+                            icon.classList.add('rotate-180');
+                            setTimeout(() => icon.classList.remove('rotate-180'), 700);
+                            loadCity(AppState.currentCity);
+                        };
+                        document.getElementById('desktopRefreshBtn')?.addEventListener('click', refreshHandler);
+
+                        const unitToggleBtn = document.getElementById('unitToggleBtn');
+                        const unitCelsius = document.getElementById('unitCelsius');
+                        const unitFahrenheit = document.getElementById('unitFahrenheit');
+
+                        function updateUnitUI() {
+                            if (AppState.unit === 'C') {
+                                unitCelsius.className = 'text-white font-bold';
+                                unitFahrenheit.className = 'text-white/40';
+                                document.getElementById('setCelsiusBtn').className = 'px-3 py-1 rounded text-xs font-bold bg-ios-blue text-white ios-btn';
+                                document.getElementById('setFahrenheitBtn').className = 'px-3 py-1 rounded text-xs font-bold text-white/50 ios-btn';
+                            } else {
+                                unitCelsius.className = 'text-white/40';
+                                unitFahrenheit.className = 'text-white font-bold';
+                                document.getElementById('setCelsiusBtn').className = 'px-3 py-1 rounded text-xs font-bold text-white/50 ios-btn';
+                                document.getElementById('setFahrenheitBtn').className = 'px-3 py-1 rounded text-xs font-bold bg-ios-blue text-white ios-btn';
+                            }
+                            localStorage.setItem('horizon_unit', AppState.unit);
+                            if (AppState.weatherData) renderWeatherData(AppState.weatherData);
+                            renderOtherCities();
+                            renderSavedCitiesListCards();
+                            renderRecentlySearched();
+                        }
+
+                        unitToggleBtn.addEventListener('click', () => {
+                            haptics.light();
+                            AppState.unit = AppState.unit === 'C' ? 'F' : 'C';
+                            updateUnitUI();
+                        });
+
+                        document.getElementById('setCelsiusBtn').addEventListener('click', () => {
+                            haptics.light();
+                            AppState.unit = 'C';
+                            updateUnitUI();
+                        });
+                        document.getElementById('setFahrenheitBtn').addEventListener('click', () => {
+                            haptics.light();
+                            AppState.unit = 'F';
+                            updateUnitUI();
+                        });
+
+                        const searchInput = document.getElementById('citySearchInput');
+                        const dropdown = document.getElementById('searchResultsDropdown');
+                        const clearBtn = document.getElementById('clearSearchBtn');
+
+                        let searchDebounceTimer = null;
+                        searchInput.addEventListener('input', (e) => {
+                            const val = e.target.value.trim();
+                            clearTimeout(searchDebounceTimer);
+
+                            if (val.length === 0) {
+                                dropdown.classList.add('hidden');
+                                clearBtn.classList.add('hidden');
+                                return;
+                            }
+
+                            clearBtn.classList.remove('hidden');
+
+                            searchDebounceTimer = setTimeout(async () => {
+                                dropdown.innerHTML = '';
+                                const lowerVal = val.toLowerCase();
+
+                                // Local matches from database
+                                const localMatches = Object.keys(CityDatabase).filter(c => c.toLowerCase().includes(val.toLowerCase()));
+                                // 1. Instant local matches from GlobalCityDataset + CityDatabase
+                                const localMatches = [];
+                                const seenNames = new Set();
+
+                                // Remote OpenWeather Geo API via Vercel endpoint
+                                GlobalCityDataset.forEach(c => {
+                                    if (c.name.toLowerCase().includes(lowerVal) || c.country.toLowerCase().includes(lowerVal)) {
+                                        if (!seenNames.has(c.name.toLowerCase())) {
+                                            seenNames.add(c.name.toLowerCase());
+                                            localMatches.push(c);
+                                        }
+                                    }
+                                });
+
+                                Object.keys(CityDatabase).forEach(name => {
+                                    if (name.toLowerCase().includes(lowerVal) && !seenNames.has(name.toLowerCase())) {
+                                        seenNames.add(name.toLowerCase());
+                                        localMatches.push({ name: name, country: CityDatabase[name].country || '', state: '' });
+                                    }
+                                });
+
+                                // 2. Query remote OpenWeather Geo API via Vercel endpoint
+                                let remoteSuggestions = [];
+                                try {
+                                    const res = await fetch(`/api/getWeather?search=${encodeURIComponent(val)}`);
+                                    if (res.ok) {
+                                        remoteSuggestions = await res.json();
+                                    }
+                                } catch (e) { }
+
+                                const combined = [];
+                                if (Array.isArray(remoteSuggestions) && remoteSuggestions.length > 0) {
+                                    remoteSuggestions.forEach(item => {
+                                        if (!seenNames.has(item.name.toLowerCase())) {
+                                            seenNames.add(item.name.toLowerCase());
+                                            combined.push(item);
+                                        }
+                                    });
+                                }
+                                const finalResults = [...combined, ...localMatches].slice(0, 8);
+
+                                if (finalResults.length > 0) {
+                                    finalResults.forEach(item => {
+                                        const opt = document.createElement('div');
+                                        opt.className = 'p-3 rounded-xl hover:bg-white/15 cursor-pointer flex items-center justify-between text-xs text-white ios-btn border-b border-white/5 last:border-none';
+                                        const stateStr = item.state ? `${item.state}, ` : '';
+                                        opt.innerHTML = `
                                 <div class="flex items-center gap-2">
                                     <span class="text-ios-teal font-bold">📍</span>
                                     <span class="font-semibold">${item.name}</span>
                                 </div>
                                 <span class="text-white/50 font-medium">${stateStr}${item.country}</span>
+                                <span class="text-white/50 font-medium">${stateStr}${item.country || ''}</span>
                             `;
-                            opt.addEventListener('click', () => {
-                                haptics.medium();
-                                loadCity(item.name);
-                                dropdown.classList.add('hidden');
-                                searchInput.value = '';
-                                clearBtn.classList.add('hidden');
-                            });
-                            dropdown.appendChild(opt);
-                        });
-                        dropdown.classList.remove('hidden');
-                    } else if (localMatches.length > 0) {
-                        localMatches.forEach(m => {
-                            const opt = document.createElement('div');
-                            opt.className = 'p-3 rounded-xl hover:bg-white/15 cursor-pointer flex items-center justify-between text-xs text-white ios-btn border-b border-white/5 last:border-none';
-                            opt.innerHTML = `<span>${m}</span><span class="text-white/50 font-semibold">${CityDatabase[m].country}</span>`;
-                            opt.addEventListener('click', () => {
-                                haptics.medium();
-                                loadCity(m);
-                                dropdown.classList.add('hidden');
-                                searchInput.value = '';
-                                clearBtn.classList.add('hidden');
-                            });
-                            dropdown.appendChild(opt);
-                        });
-                        dropdown.classList.remove('hidden');
-                    } else {
-                        dropdown.innerHTML = `<div class="p-3 text-xs text-white/60">Press Enter to search "${val}"</div>`;
-                        dropdown.classList.remove('hidden');
-                    }
+                                        opt.addEventListener('click', () => {
+                                            haptics.medium();
+                                            loadCity(item.name);
+                                            switchTab('tab-home');
+                                            dropdown.classList.add('hidden');
+                                            searchInput.value = '';
+                                            clearBtn.classList.add('hidden');
+                                        });
+                                        dropdown.appendChild(opt);
+                                    });
+                                    dropdown.classList.remove('hidden');
+                                } else if (localMatches.length > 0) {
+                                    localMatches.forEach(m => {
+                                        const opt = document.createElement('div');
+                                        opt.className = 'p-3 rounded-xl hover:bg-white/15 cursor-pointer flex items-center justify-between text-xs text-white ios-btn border-b border-white/5 last:border-none';
+                                        opt.innerHTML = `<span>${m}</span><span class="text-white/50 font-semibold">${CityDatabase[m].country}</span>`;
+                                        opt.addEventListener('click', () => {
+                                            haptics.medium();
+                                            loadCity(m);
+                                            dropdown.classList.add('hidden');
+                                            searchInput.value = '';
+                                            clearBtn.classList.add('hidden');
+                                        });
+                                        dropdown.appendChild(opt);
+                                    } else {
+                                        dropdown.innerHTML = `
+                            <div class="p-3 text-xs text-white/80 hover:bg-white/15 rounded-xl cursor-pointer flex items-center justify-between ios-btn" id="searchEnterDirect">
+                                <span>Search for "<strong>${val}</strong>"</span>
+                                <span class="text-ios-teal font-semibold text-[11px]">Press Enter ↵</span>
+                            </div>
+                        `;
+                                        dropdown.querySelector('#searchEnterDirect')?.addEventListener('click', () => {
+                                            haptics.medium();
+                                            loadCity(val);
+                                            switchTab('tab-home');
+                                            dropdown.classList.add('hidden');
+                                            searchInput.value = '';
+                                            clearBtn.classList.add('hidden');
+                                        });
+                                        dropdown.classList.remove('hidden');
+                                    } else {
+                                        dropdown.innerHTML = `<div class="p-3 text-xs text-white/60">Press Enter to search "${val}"</div>`;
+                                        dropdown.classList.remove('hidden');
+                                    }
                 }, 280);
-            });
+                        }, 180);
+                    });
 
-            searchInput.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' && searchInput.value.trim()) {
-                    haptics.medium();
-                    loadCity(searchInput.value.trim());
-                    dropdown.classList.add('hidden');
-                    searchInput.blur();
-                }
-            });
-
-            clearBtn.addEventListener('click', () => {
-                searchInput.value = '';
-                dropdown.classList.add('hidden');
-                clearBtn.classList.add('hidden');
-            });
-
-            document.addEventListener('click', (e) => {
-                if (!e.target.closest('#citySearchInput') && !e.target.closest('#searchResultsDropdown')) {
-                    dropdown.classList.add('hidden');
-                }
-            });
-
-            const fullSearchInput = document.getElementById('fullViewSearchInput');
-            fullSearchInput.addEventListener('input', (e) => {
-                renderSavedCitiesListCards(e.target.value);
-            });
-
-            document.getElementById('geoLocateBtn').addEventListener('click', () => {
-                haptics.light();
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(
-                        async (pos) => {
-                            haptics.success();
-                            const ok = await fetchWeatherByCoords(pos.coords.latitude, pos.coords.longitude);
-                            if (!ok) {
-                                loadCity("Brooklyn");
-                            }
-                        },
-                        () => {
-                            haptics.warning();
-                            alert("Location access was denied. Showing Brooklyn.");
-                            loadCity("Brooklyn");
+                    searchInput.addEventListener('keydown', (e) => {
+                        if (e.key === 'Enter' && searchInput.value.trim()) {
+                            haptics.medium();
+                            loadCity(searchInput.value.trim());
+                            switchTab('tab-home');
+                            dropdown.classList.add('hidden');
+                            searchInput.blur();
                         }
-                    );
-                } else {
-                    alert("Geolocation is not supported by your browser.");
-                }
-            });
+                    });
 
-            document.getElementById('mobileGridBtn').addEventListener('click', () => {
-                switchTab('tab-search');
-            });
+                    clearBtn.addEventListener('click', () => {
+                        searchInput.value = '';
+                        dropdown.classList.add('hidden');
+                        clearBtn.classList.add('hidden');
+                    });
 
-            const settingsModal = document.getElementById('settingsModal');
-            const openSettings = () => {
-                haptics.light();
-                settingsModal.classList.remove('hidden');
-            };
-            const closeSettings = () => {
-                haptics.light();
-                settingsModal.classList.add('hidden');
-            };
+                    document.addEventListener('click', (e) => {
+                        if (!e.target.closest('#citySearchInput') && !e.target.closest('#searchResultsDropdown')) {
+                            dropdown.classList.add('hidden');
+                        }
+                    });
 
-            document.getElementById('openSettingsModalDesktop')?.addEventListener('click', openSettings);
-            document.getElementById('mobileOptionsBtn')?.addEventListener('click', openSettings);
-            document.getElementById('appLogoBtn')?.addEventListener('click', () => switchTab('tab-home'));
-            document.getElementById('closeSettingsModal')?.addEventListener('click', closeSettings);
+                    const fullSearchInput = document.getElementById('fullViewSearchInput');
+                    fullSearchInput.addEventListener('input', (e) => {
+                        fullSearchInput?.addEventListener('input', (e) => {
+                            renderSavedCitiesListCards(e.target.value);
+                        });
 
-            document.getElementById('testHapticsBtn')?.addEventListener('click', () => {
-                haptics.success();
-            });
+                        document.getElementById('toggleSaveCurrentCityBtn')?.addEventListener('click', () => {
+                            haptics.medium();
+                            const current = AppState.currentCity;
+                            if (AppState.savedCities.some(c => c.toLowerCase() === current.toLowerCase())) {
+                                removeCityFromSaved(current);
+                            } else {
+                                addCityToSaved(current);
+                            }
+                        });
 
-            document.getElementById('hapticsToggleInput')?.addEventListener('change', (e) => {
-                haptics.enabled = e.target.checked;
-                if (haptics.enabled) haptics.light();
-            });
+                        document.getElementById('geoLocateBtn').addEventListener('click', () => {
+                            haptics.light();
+                            if (navigator.geolocation) {
+                                navigator.geolocation.getCurrentPosition(
+                                    async (pos) => {
+                                        haptics.success();
+                                        const ok = await fetchWeatherByCoords(pos.coords.latitude, pos.coords.longitude);
+                                        if (!ok) {
+                                            loadCity("Brooklyn");
+                                        }
+                                        switchTab('tab-home');
+                                    },
+                                    () => {
+                                        haptics.warning();
+                                        alert("Location access was denied. Showing Brooklyn.");
+                                        loadCity("Brooklyn");
+                                        switchTab('tab-home');
+                                    }
+                                );
+                            } else {
+                                alert("Geolocation is not supported by your browser.");
+                            }
+                        });
 
-            document.getElementById('particlesToggleInput')?.addEventListener('change', (e) => {
-                AppState.particlesEnabled = e.target.checked;
-                haptics.light();
-            });
+                        document.getElementById('mobileGridBtn').addEventListener('click', () => {
+                            switchTab('tab-search');
+                        });
 
-            const addCityModal = document.getElementById('addCityModal');
-            const addCityInput = document.getElementById('addCityModalInput');
-            const openAddCity = () => {
-                haptics.light();
-                addCityModal.classList.remove('hidden');
-                addCityInput.focus();
-            };
-            const closeAddCity = () => {
-                haptics.light();
-                addCityModal.classList.add('hidden');
-                addCityInput.value = '';
-            };
+                        const settingsModal = document.getElementById('settingsModal');
+                        const openSettings = () => {
+                            haptics.light();
+                            settingsModal.classList.remove('hidden');
+                        };
+                        const closeSettings = () => {
+                            haptics.light();
+                            settingsModal.classList.add('hidden');
+                        };
 
-            document.getElementById('addCityQuickBtn')?.addEventListener('click', openAddCity);
-            document.getElementById('addCityModalTrigger')?.addEventListener('click', openAddCity);
-            document.getElementById('closeAddCityModal')?.addEventListener('click', closeAddCity);
+                        document.getElementById('openSettingsModalDesktop')?.addEventListener('click', openSettings);
+                        document.getElementById('mobileOptionsBtn')?.addEventListener('click', openSettings);
+                        document.getElementById('appLogoBtn')?.addEventListener('click', () => switchTab('tab-home'));
+                        document.getElementById('closeSettingsModal')?.addEventListener('click', closeSettings);
 
-            document.getElementById('confirmAddCityBtn')?.addEventListener('click', () => {
-                const val = addCityInput.value.trim();
-                if (val) {
-                    haptics.success();
-                    if (!AppState.savedCities.includes(val)) {
-                        AppState.savedCities.push(val);
-                        localStorage.setItem('horizon_saved', JSON.stringify(AppState.savedCities));
-                    }
-                    renderOtherCities();
-                    renderSavedCitiesListCards();
-                    closeAddCity();
-                    loadCity(val);
-                }
-            });
+                        document.getElementById('testHapticsBtn')?.addEventListener('click', () => {
+                            haptics.success();
+                        });
 
-            const waveSvg = document.getElementById('bezierWaveSvg');
-            waveSvg?.addEventListener('mousemove', (e) => {
-                const rect = waveSvg.getBoundingClientRect();
-                const x = ((e.clientX - rect.left) / rect.width) * 320;
-                const t = x / 320;
-                const y = Math.sin(t * Math.PI * 1.5) * 25 + 50;
-                const point = document.getElementById('waveTargetPoint');
-                point.setAttribute('cx', x);
-                point.setAttribute('cy', y);
-                const tooltip = document.getElementById('graphTooltip');
-                const hour = Math.round(t * 12 + 8);
-                const temp = Math.round(20 + Math.sin(t * Math.PI) * 9);
-                tooltip.textContent = `${temp}° @ ${hour > 12 ? hour - 12 + ' PM' : hour + ' AM'}`;
-            });
-        });
+                        document.getElementById('hapticsToggleInput')?.addEventListener('change', (e) => {
+                            haptics.enabled = e.target.checked;
+                            if (haptics.enabled) haptics.light();
+                        });
+
+                        document.getElementById('particlesToggleInput')?.addEventListener('change', (e) => {
+                            AppState.particlesEnabled = e.target.checked;
+                            haptics.light();
+                        });
+
+                        const addCityModal = document.getElementById('addCityModal');
+                        const addCityInput = document.getElementById('addCityModalInput');
+                        const openAddCity = () => {
+                            haptics.light();
+                            addCityModal.classList.remove('hidden');
+                            addCityInput.focus();
+                        };
+                        const closeAddCity = () => {
+                            haptics.light();
+                            addCityModal.classList.add('hidden');
+                            addCityInput.value = '';
+                        };
+
+                        document.getElementById('addCityQuickBtn')?.addEventListener('click', openAddCity);
+                        document.getElementById('addCityModalTrigger')?.addEventListener('click', openAddCity);
+                        document.getElementById('closeAddCityModal')?.addEventListener('click', closeAddCity);
+
+                        document.getElementById('confirmAddCityBtn')?.addEventListener('click', () => {
+                            const val = addCityInput.value.trim();
+                            if (val) {
+                                haptics.success();
+                                if (!AppState.savedCities.includes(val)) {
+                                    AppState.savedCities.push(val);
+                                    localStorage.setItem('horizon_saved', JSON.stringify(AppState.savedCities));
+                                }
+                                renderOtherCities();
+                                renderSavedCitiesListCards();
+                                haptics.medium();
+                                addCityToSaved(val);
+                                closeAddCity();
+                                loadCity(val);
+                                switchTab('tab-home');
+                            }
+                        });
+
+                        addCityInput?.addEventListener('keydown', (e) => {
+                            if (e.key === 'Enter') {
+                                document.getElementById('confirmAddCityBtn')?.click();
+                            }
+                        });
+
+                        const waveSvg = document.getElementById('bezierWaveSvg');
+                        waveSvg?.addEventListener('mousemove', (e) => {
+                            const rect = waveSvg.getBoundingClientRect();
+                            const x = ((e.clientX - rect.left) / rect.width) * 320;
+                            const t = x / 320;
+                            const y = Math.sin(t * Math.PI * 1.5) * 25 + 50;
+                            const point = document.getElementById('waveTargetPoint');
+                            point.setAttribute('cx', x);
+                            point.setAttribute('cy', y);
+                            const tooltip = document.getElementById('graphTooltip');
+                            const hour = Math.round(t * 12 + 8);
+                            const temp = Math.round(20 + Math.sin(t * Math.PI) * 9);
+                            tooltip.textContent = `${temp}° @ ${hour > 12 ? hour - 12 + ' PM' : hour + ' AM'}`;
+                        });
+                    });
     </script>
 </body>
+
 </html>
